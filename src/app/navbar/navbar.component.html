@@ -7,22 +7,22 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/event-browse/6/0">Evenimente</a>
+                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/story-browse/6/0">Stories</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/user-dashboard/registered-stories/5/0">Contul tău</a>
+                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/user-dashboard/registered-stories/5/0">Your account</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/event-create">Crează un eveniment</a>
+                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/story-create">Create Story</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/about">Despre</a>
+                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/about">About</a>
             </li>
         </ul>
 
         <form class="form-inline my-2 my-lg-0">
             <div class="input-group">
-                <input type="text" class="form-control" id="searchText" placeholder="caută..." (keydown)="enterDown($event)">
+                <input type="text" class="form-control" id="searchText" placeholder="search for a specific story..." (keydown)="enterDown($event)">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button" (click)="search()"><b>&#8981;</b></button>
                 </div>

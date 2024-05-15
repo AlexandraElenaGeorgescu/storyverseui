@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({ 
     standalone: true,
@@ -13,11 +14,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         RouterModule,
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
     ],
     selector: 'app-review-edit',
     templateUrl: './review-edit.component.html',
-    styleUrls: ['./review-edit.component.css']
+    styleUrls: ['./review-edit.component.css'],
+    providers: [DataService]
 })
 export class ReviewEditComponent implements OnInit {
 

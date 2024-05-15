@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,
@@ -13,11 +14,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       RouterModule,
       CommonModule,
       FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      HttpClientModule
   ],
   selector: 'app-story-search',
   templateUrl: './story-search.component.html',
-  styleUrls: ['./story-search.component.css']
+  styleUrls: ['./story-search.component.css'],
+  providers: [DataService]
 })
 export class StorySearchComponent implements OnInit {
     stories: StoryModel[] = [];

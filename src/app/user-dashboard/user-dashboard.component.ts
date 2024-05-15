@@ -6,16 +6,19 @@ import { UtilsService } from '../services/utils.service';
 import { UserModel } from '../models/user.model';
 import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
     standalone: true,
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        HttpClientModule
     ],
     selector: 'app-user-dashboard',
     templateUrl: './user-dashboard.component.html',
-    styleUrls: ['./user-dashboard.component.css']
+    styleUrls: ['./user-dashboard.component.css'],
+    providers: [DataService]
 })
 export class UserDashboardComponent implements OnInit {
     stories: StoryModel[] = [];

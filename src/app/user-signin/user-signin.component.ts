@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { UserModel } from '../models/user.model';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,
   imports: [ 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule
   ],
   selector: 'app-user-signin',
   templateUrl: './user-signin.component.html',
-  styleUrls: ['./user-signin.component.css']
+  styleUrls: ['./user-signin.component.css'],
+  providers: [DataService]
 })
 export class UserSigninComponent implements OnInit {
     user: UserModel = new UserModel();

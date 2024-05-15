@@ -5,16 +5,19 @@ import { StoryModel } from '../models/story.model';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({ 
     standalone: true,
     imports: [
         RouterModule,
-        CommonModule
+        CommonModule,
+        HttpClientModule
     ],
     selector: 'app-story-browse',
     templateUrl: './story-browse.component.html',
-    styleUrls: ['./story-browse.component.css']
+    styleUrls: ['./story-browse.component.css'],
+    providers: [DataService]
 })
 export class StoryBrowseComponent implements OnInit {
     stories: StoryModel[] = [];

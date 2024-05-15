@@ -6,7 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 
 import { Output, EventEmitter } from '@angular/core';
-import { HttpEventType, HttpClient } from '@angular/common/http';
+import { HttpEventType, HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,11 +16,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         RouterModule,
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
     ],
     selector: 'app-story-create',
     templateUrl: './story-create.component.html',
-    styleUrls: ['./story-create.component.css']
+    styleUrls: ['./story-create.component.css'],
+    providers: [DataService]
 })
 export class StoryCreateComponent implements OnInit {
         storyM: StoryModel = new StoryModel();

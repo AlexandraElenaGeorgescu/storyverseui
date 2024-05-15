@@ -5,16 +5,19 @@ import { UserModel } from '../models/user.model';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     selector: 'app-user-signup',
     templateUrl: './user-signup.component.html',
-    styleUrls: ['./user-signup.component.css']
+    styleUrls: ['./user-signup.component.css'],
+    providers: [DataService]
 })
 export class UserSignupComponent implements OnInit {
     user: UserModel = new UserModel();

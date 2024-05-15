@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 declare var Chartist: any;
 
 class ReviewsInfo {
@@ -55,11 +56,13 @@ class PieInfo {
        RouterModule,
        CommonModule,
        FormsModule,
-       ReactiveFormsModule
+       ReactiveFormsModule,
+       HttpClientModule
   ],
   selector: 'app-story-stats',
   templateUrl: './story-stats.component.html',
-  styleUrls: ['./story-stats.component.css']
+  styleUrls: ['./story-stats.component.css'],
+  providers: [DataService]
 })
 
 export class StoryStatsComponent implements OnInit {

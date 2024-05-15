@@ -5,16 +5,19 @@ import { ReviewModel } from '../models/review.model';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
     standalone: true,
     imports: [
         RouterModule,
-        CommonModule
+        CommonModule,
+        HttpClientModule
     ],
     selector: 'app-review-browse',
     templateUrl: './review-browse.component.html',
-    styleUrls: ['./review-browse.component.css']
+    styleUrls: ['./review-browse.component.css'],
+    providers: [DataService]
 })
 export class ReviewBrowseComponent implements OnInit {
     reviews: ReviewModel[] = [];
