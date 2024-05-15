@@ -1,0 +1,15 @@
+<div class="row align-items-center justify-content-center">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+        <div id="msg-div"></div>
+        <br>
+        <div class="input-group">
+            <input type="text" class="form-control" id="messageInput" placeholder="trimite mesaj..." (focus)="goBottom()" (keydown)="enterDown($event)">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" (click)="sendMessage()"><b>&#8614;</b></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id='goBottom' (click) = "goBottom()">
+    <span>&#8650;</span>
+</div>

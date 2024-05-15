@@ -1,0 +1,60 @@
+.user-msg {
+    border: 1px solid darkblue;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+}
+
+.user-msg > span > span:first-child {
+    color: darkblue;
+    font-weight: bold;
+}
+
+.user-msg > span:first-child > span:last-child {
+    color: black;
+    font-style: italic;
+}
+
+.user-msg > span:last-child {
+    color: darkblue;
+    font-size: small;
+}
+
+.my-msg {
+    border: 1px solid darkred;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+}
+
+.my-msg > span:first-child {
+    color: black;
+    font-style: italic;
+}
+
+.my-msg > span:last-child {
+    color:darkred;
+    font-size: small;
+}
+
+#goBottom {
+    display: none;
+    overflow: visible;
+    position: fixed;
+    right: 50%;
+    bottom: 40px;
+    margin-right: -30px;
+}
+
+#goBottom > span {
+    font-size: xx-large;
+    color: #007bff;
+    font-weight: bolder;
+    background-color: #343a40;
+    padding: 10px 18px 10px 18px;
+    border-radius: 50px;
+    border: solid;
+    border-color: #007bff;
+    border-width: 1px;
+    cursor: pointer;
+}

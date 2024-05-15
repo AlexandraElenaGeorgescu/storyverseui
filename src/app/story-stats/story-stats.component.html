@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-danger">
+            <span>
+                <b>{{reviwesInfo.nrReviews}}</b> utilizatori și-au dat o părere despre acest eveniment. <br>
+                În medie, acest eveniment a primit nota <b>{{reviwesInfo.averageRating}}</b> din 5.
+            </span>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="alert alert-warning">
+            <span>Graficul de mai jos afișează numărul lunar de mesaje trimise pe chat-ul evenimentului între <b>{{lineInfo.startDate}}</b> și <b>{{lineInfo.endDate}}</b>.<br> În total au fost transmise <b>{{lineInfo.total}} mesaje</b>.</span>
+        </div>
+        <div class="ct-chart ct-minor-second" id="chart1"></div>
+    </div>
+    
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="alert alert-primary">
+            <span>
+                Utilizatori înscriși la evenimentele tale: <b>{{pieInfo.subscribedTotal}}</b>, din care<br>
+                <b>{{pieInfo.subscribedToThisEvent}} ({{pieInfo.thisRatio}}%)</b> s-au înscris doar la acest eveniment (<b>ROȘU</b>) <br>
+                <b>{{pieInfo.subscribedToOthers}} ({{pieInfo.othersRatio}}%)</b> s-au înscris doar la alte evenimente create de tine (<b>ROZ</b>) <br>
+                <b>{{pieInfo.subscribedBoth}} ({{pieInfo.bothRatio}}%)</b> s-au înscris și la acest eveniment și la altele create de tine (<b>GALBEN</b>)
+            </span>
+        </div>
+        <div class="ct-chart ct-minor-second" id="chart2"></div>
+    </div>
+</div>

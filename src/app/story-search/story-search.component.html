@@ -1,0 +1,37 @@
+<div class="btn-group m-0" role="group">
+    <a routerLink="/story-search/{{pageSize}}/{{+pageId-1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
+    <button type="button" class="btn btn-secondary disabled">Evenimente</button>
+    <a routerLink="/story-search/{{pageSize}}/{{+pageId+1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
+</div>
+
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let story of stories">
+
+        <div class="card my-3">
+            <div class="card-body">
+                <h5 class="card-title">{{story.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{story.startDate}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{story.endDate}}</h6>
+                <p class="card-text">{{story.description.substr(0,50)}}...</p>
+                <button type="button" class="btn btn-primary" routerLink="/story-details/{{story.id}}">Detalii</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12">
+
+        <div class="card-body my-3" *ngIf="nextBtnDisabled">
+            <h5 class="card-title invisible">______________________________</h5>
+            <h6 class="card-subtitle mb-2 text-muted invisible">______________________________</h6>
+            <p class="card-text">Nu mai sunt elemente de afișat</p>
+            <button type="button" class="btn btn-primary invisible">_____</button>
+        </div>
+        
+    </div>
+</div>
+
+<div class="btn-group m-0" role="group">
+    <a routerLink="/story-search/{{pageSize}}/{{+pageId-1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
+    <button type="button" class="btn btn-secondary disabled">Evenimente</button>
+    <a routerLink="/story-search/{{pageSize}}/{{+pageId+1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
+</div>
