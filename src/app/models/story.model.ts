@@ -11,7 +11,7 @@ export class StoryModel{
         this.id = '';
         this.name = '';
         this.dateCreated = '2024-06-21 02:00';
-        this.genre = 'Fantesy';
+        this.genre = 'SF';
         this.actualStory = '';
         this.description = '';
         this.image = '';

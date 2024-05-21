@@ -1,1 +1,77 @@
- 
+/* user-signup.component.css */
+
+.container {
+    background-color: #f4f1ea; /* Light parchment background color */
+    border: 1px solid #c1a57b; /* Soft brown border */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.form-group label {
+    font-family: 'Garamond', serif; /* Classic bookish font */
+    color: #3b2716; /* Dark brown text color */
+}
+
+.form-control {
+    font-family: 'Garamond', serif;
+    border: 1px solid #c1a57b;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 8px;
+}
+
+.form-control::placeholder {
+    color: #a39374; /* Faded brown placeholder text */
+}
+
+.alert {
+    background-color: #d7bfae; /* Soft gold background */
+    color: #3b2716; /* Dark brown text color */
+    font-family: 'Garamond', serif; /* Bookish font */
+    border-radius: 5px;
+}
+
+button, .btn {
+    font-family: 'Garamond', serif;
+    background-color: #3b2716;
+    color: #f4f1ea;
+    border: 1px solid #c1a57b;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+button:hover, .btn:hover {
+    background-color: #5a3e2b;
+    border-color: #a89360;
+}
+
+.btn-primary {
+    background-color: #d7bfae;
+    border-color: #3b2716;
+    color: #3b2716;
+}
+
+.btn-success {
+    background-color: #4CAF50;
+    border-color: #388E3C;
+    color: #f4f1ea;
+}
+
+span {
+    font-family: 'Garamond', serif;
+    color: #3b2716;
+    display: block;
+    margin-top: 10px;
+}
+
+.btn {
+    font-family: 'Garamond', serif;
+    background-color: #3b2716;
+    color: #f4f1ea;
+    border: 1px solid #c1a57b;
+    border-radius: 5px;
+    margin: 5px;
+}
