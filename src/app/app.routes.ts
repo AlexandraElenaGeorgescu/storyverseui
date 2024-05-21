@@ -3,14 +3,13 @@ import { AboutComponent } from './about/about.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { ContactComponent } from './contact/contact.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { StoryCreateComponent } from './story-create/story-create.component';
 import { StoryBrowseComponent } from './story-browse/story-browse.component';
 import { StoryDetailsComponent } from './story-details/story-details.component';
 import { StoryStatsComponent } from './story-stats/story-stats.component';
-import { ReviewBrowseComponent } from './review-browse/review-browse.component';
-import { ReviewEditComponent } from './review-edit/review-edit.component';
+import { ReviewBrowseComponent } from './chat-room/review-browse/review-browse.component';
+import { ReviewEditComponent } from './chat-room/review-edit/review-edit.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 

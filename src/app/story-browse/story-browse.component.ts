@@ -6,13 +6,16 @@ import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({ 
     standalone: true,
     imports: [
         RouterModule,
+        HttpClientModule,
         CommonModule,
-        HttpClientModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     selector: 'app-story-browse',
     templateUrl: './story-browse.component.html',
@@ -27,17 +30,17 @@ export class StoryBrowseComponent implements OnInit {
     nextBtnDisabled: boolean = false;
 
     constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
-        this.titleService.setTitle('Navigare evenimente');
+        this.titleService.setTitle('Browse Stories');
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.pageSize = this.route.snapshot.params['pageSize'];
         this.pageId = this.route.snapshot.params['pageId'];
         
-        this.dataService.get<StoryModel[]>('story/browse/' + this.pageSize + '/' + this.pageId, serverEvents => {
-            this.stories = serverEvents;
+        this.dataService.get<StoryModel[]>('story/browse/' + this.pageSize + '/' + this.pageId, serverStories => {
+            this.stories = serverStories;
             this.prevBtnDisabled = this.pageId == 0;
             this.nextBtnDisabled = this.stories.length < this.pageSize; 
         }, error => {
-            this.utils.showMessage('A apărut o problemă!');
+            this.utils.showMessage('There was a problem!');
             console.log(`Error response: ${error}`);
          });
     }

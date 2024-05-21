@@ -1,6 +1,6 @@
 <div class="btn-group m-0" role="group">
     <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId-1}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
-    <button type="button" class="btn btn-secondary disabled">Recenzii</button>
+    <button type="button" class="btn btn-secondary disabled">Reviews</button>
     <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId+1}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
 </div>
 
@@ -20,7 +20,7 @@
                 <h5 class="card-title">{{review.opinion.substr(0,50)}}...</h5>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modalLong-' + i">
-                    Deschide
+                    Open
                 </button>
                 <!-- Modal -->
                 <div class="modal fade" id='modalLong-{{i}}' tabindex="-1" role="dialog" aria-labelledby="modalLongTitle"
@@ -29,13 +29,13 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="modalLongTitle"></h5>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">&larr;&nbsp;Înapoi</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">&larr;&nbsp;Back</button>
                             </div>
                             <div class="modal-body">
                                 {{review.opinion}}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">&larr;&nbsp;Înapoi</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">&larr;&nbsp;Back</button>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
         <div class="card-body my-3" *ngIf="nextBtnDisabled">
             <h5 class="card-title invisible">______________________________</h5>
             <h6 class="card-subtitle mb-2 text-muted invisible">______________________________</h6>
-            <p class="card-text">Nu mai sunt elemente de afișat</p>
+            <p class="card-text">No more items to display</p>
             <button type="button" class="btn btn-primary invisible">_____</button>
         </div>
         
@@ -62,6 +62,6 @@
 
 <div class="btn-group m-0" role="group">
     <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId-1}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
-    <button type="button" class="btn btn-secondary disabled">Recenzii</button>
+    <button type="button" class="btn btn-secondary disabled">Reviews</button>
     <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId+1}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
 </div>

@@ -1,21 +1,19 @@
 export class StoryModel{
-    id: string;
-    name: string;
-    startDate: string;
-    endDate: string;
-    location: string;
-    description: string;
-    url: string;
-    image: string;
+    id!: string;
+    name!: string;
+    dateCreated!: string;
+    genre!: string;
+    description!: string;
+    actualStory!: string;
+    image?: string;
 
     constructor() {
         this.id = '';
         this.name = '';
-        this.startDate = '2020-06-15 02:00';
-        this.endDate = '2020-06-16 03:30';
-        this.location = '';
+        this.dateCreated = '2024-06-21 02:00';
+        this.genre = 'Fantesy';
+        this.actualStory = '';
         this.description = '';
-        this.url = '';
         this.image = '';
     }
 }

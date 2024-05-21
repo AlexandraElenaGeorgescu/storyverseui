@@ -5,53 +5,42 @@
             <div class="form-group">
                 <label for="userEmailFormControl">Email:</label>
                 <input type="email" class="form-control" id="userEmailFormControl" name="userEmail" [(ngModel)]="user.email"
-                    [email]="true" placeholder="ex: numeletau@companie.ro" #userEmailCheck="ngModel" maxlength=50
+                    [email]="true" placeholder="e.g., yourname@company.com" #userEmailCheck="ngModel" maxlength=50
                     required>
-                <div [hidden]="userEmailCheck.valid" class="alert alert-danger my-2" role="alert">Câmpul pentru adresa
-                    de email
-                    este obligatoriu!</div>
+                <div [hidden]="userEmailCheck.valid" class="alert alert-danger my-2" role="alert">Email address is required!</div>
             </div>
 
             <div class="form-group">
-                <label for="userPasswordFormControl">Parolă:</label>
+                <label for="userPasswordFormControl">Password:</label>
                 <input type="password" class="form-control" id="userPasswordFormControl" name="userPassword"
-                    [(ngModel)]="user.password" placeholder="va fi necesară pentru autentificare"
+                    [(ngModel)]="user.password" placeholder="this will be required for sign in"
                     #userPasswordCheck="ngModel" maxlength=50 required>
-                <div [hidden]="userPasswordCheck.valid" class="alert alert-danger my-2" role="alert">Câmpul pentru
-                    parolă este
-                    obligatoriu!</div>
+                <div [hidden]="userPasswordCheck.valid" class="alert alert-danger my-2" role="alert">Password is required!</div>
             </div>
 
             <div class="form-group">
-                <label for="userBirthdayFormControl">Ziua de naștere:</label>
+                <label for="userBirthdayFormControl">Birthday:</label>
                 <input type="date" class="form-control" id="userBirthdayFormControl" name="userBirthday" [(ngModel)]="birthday"
                     #userBirthdayCheck="ngModel" max="2018-01-01" required>
-                <div [hidden]="userBirthdayCheck.valid" class="alert alert-danger my-2" role="alert">Câmpul pentru ziua
-                    de naștere este
-                    obligatoriu!</div>
+                <div [hidden]="userBirthdayCheck.valid" class="alert alert-danger my-2" role="alert">Birthday is required!</div>
             </div>
 
             <div class="form-group">
-                <label for="userNameFormControl">Prenume:</label>
+                <label for="userNameFormControl">First Name:</label>
                 <input type="text" class="form-control" id="userNameFormControl" name="userName" [(ngModel)]="user.name"
-                    placeholder="prenumele..." #userNameCheck="ngModel" maxlength=50 required>
-                <div [hidden]="userNameCheck.valid" class="alert alert-danger my-2" role="alert">Câmpul pentru
-                    prenume este
-                    obligatoriu!</div>
+                    placeholder="first name..." #userNameCheck="ngModel" maxlength=50 required>
+                <div [hidden]="userNameCheck.valid" class="alert alert-danger my-2" role="alert">First name is required!</div>
             </div>
 
             <div class="form-group">
-                <label for="userSurnameFormControl">Nume:</label>
+                <label for="userSurnameFormControl">Last Name:</label>
                 <input type="text" class="form-control" id="userSurnameFormControl" name="userSurname" [(ngModel)]="user.surname"
-                    placeholder="numele de familie..." #userSurnameCheck="ngModel" maxlength=50 required>
-                <div [hidden]="userSurnameCheck.valid" class="alert alert-danger my-2" role="alert">Câmpul pentru nume
-                        este
-                        obligatoriu!</div>
+                    placeholder="last name..." #userSurnameCheck="ngModel" maxlength=50 required>
+                <div [hidden]="userSurnameCheck.valid" class="alert alert-danger my-2" role="alert">Last name is required!</div>
             </div>
 
-            <button type="submit" class="btn btn-primary mr-1 mb-1" [disabled]="!form.valid">Înregistrare</button>
-            <a class="btn btn-success mr-1 mb-1" routerLink="/user-signin" role="button">Am deja cont</a>
+            <button type="submit" class="btn btn-primary mr-1 mb-1" [disabled]="!form.valid">Sign Up</button>
+            <a class="btn btn-success mr-1 mb-1" routerLink="/user-signin" role="button">I already have an account</a>
         </form>
-
     </div>
 </div>

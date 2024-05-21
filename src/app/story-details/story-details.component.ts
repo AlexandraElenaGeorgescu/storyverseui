@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { StoryModel } from '../models/story.model';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     standalone: true,
     imports: [
         RouterModule,
         CommonModule,
+        HttpClientModule,
         FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule
+        ReactiveFormsModule
     ],
     selector: 'app-story-details',
     templateUrl: './story-details.component.html',
@@ -24,18 +24,15 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class StoryDetailsComponent implements OnInit {
     storyId: string;
-    storyM: StoryModel = new StoryModel;
+    storyM: StoryModel = new StoryModel();
     registrationStatus: string = "";
-    googleApiKey: string;
 
     constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
-        this.titleService.setTitle('Detalii eveniment');
+        this.titleService.setTitle('Story Details');
         this.storyId = this.route.snapshot.params['id'];
-        this.googleApiKey = this.dataService.getGoogleMapsAPiKey();
-        
+
         this.dataService.get<StoryModel>('story/details/' + this.storyId, serverEvent => {
             this.storyM = serverEvent;
-            // this.storyM.image = this.dataService.getImageAbsoluteUrl(this.storyM.image);
             dataService.get<string>('user/registration-status/' + this.storyId, serverRegistrationStatus => {
                 this.registrationStatus = serverRegistrationStatus;
                 this.showBtns();
@@ -45,9 +42,9 @@ export class StoryDetailsComponent implements OnInit {
                 console.log(`Error response: ${error}`);
             }, localStorage.getItem('user-token') ?? '');
         }, error => {
-            this.utils.showMessage('A apărut o problemă!');
+            this.utils.showMessage('There was a problem!');
             console.log(`Error response: ${error}`);
-         });
+        });
     }
 
     ngOnInit() { }
@@ -80,7 +77,7 @@ export class StoryDetailsComponent implements OnInit {
                 const btnRegister = document.getElementById('btnRegister');
                 if (btnRegister) {
                     btnRegister.removeAttribute('hidden');
-                    btnRegister.innerText = 'Ești înscris (anulează)';
+                    btnRegister.innerText = 'Registered (cancel)';
                 }
                 const btnYourReview = document.getElementById('btnYourReview');
                 if (btnYourReview) {
@@ -96,7 +93,7 @@ export class StoryDetailsComponent implements OnInit {
                 const btnRegister = document.getElementById('btnRegister');
                 if (btnRegister) {
                     btnRegister.removeAttribute('hidden');
-                    btnRegister.innerText = 'Înscrie-te';
+                    btnRegister.innerText = 'Register';
                 }
                 break;
             }
@@ -105,36 +102,32 @@ export class StoryDetailsComponent implements OnInit {
 
     btnRegisterClick() {
         if (this.registrationStatus == 'unregistered') {
-
             this.dataService.patch<Boolean>('user/register/' + this.storyId, response => {
                 this.registrationStatus = 'registered';
-                document.getElementById('btnRegister')!.innerText = 'Ești înscris (anulează)';
-                this.utils.showMessage('Ai fost înscris!');
+                document.getElementById('btnRegister')!.innerText = 'Registered (cancel)';
+                this.utils.showMessage('You have been registered!');
                 document.getElementById('btnYourReview')!.style.display = 'inline-block';
             }, error => {
-                this.utils.showMessage('A apărut o problemă!');
+                this.utils.showMessage('There was a problem!');
                 console.log(`Error response: ${error}`);
             }, undefined, localStorage.getItem('user-token') ?? "");
-
         } else if (this.registrationStatus == 'registered') {
-
             this.dataService.patch<Boolean>('user/unregister/' + this.storyId, response => {
                 this.registrationStatus = 'unregistered';
                 const btnRegister = document.getElementById('btnRegister');
                 if (btnRegister) {
-                    btnRegister.innerText = 'Înscrie-te';
+                    btnRegister.innerText = 'Register';
                 }
-                this.utils.showMessage('Înregistrarea ta a fost anulată!');
+                this.utils.showMessage('Your registration has been canceled!');
                 const btnYourReview = document.getElementById('btnYourReview');
                 if (btnYourReview) {
                     btnYourReview.style.removeProperty('display');
                     btnYourReview.style.display = 'none';
                 }
             }, error => {
-                this.utils.showMessage('A apărut o problemă!');
+                this.utils.showMessage('There was a problem!');
                 console.log(`Error response: ${error}`);
             }, undefined, localStorage.getItem('user-token') ?? "");
-
         }
     }
 }

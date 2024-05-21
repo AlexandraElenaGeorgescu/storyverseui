@@ -1,22 +1,16 @@
 <div class="row align-items-center justify-content-center">
     <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-
-        <img src="{{storyM.image}}" class="img-fluid rounded" alt="Imagine eveniment">
+        <img src="{{storyM.image}}" class="img-fluid rounded" alt="Book Cover">
         <h1>{{storyM.name}}</h1>
-        <h6><i>Începe: {{storyM.startDate}}</i></h6>
-        <h6><i>Se termină: {{storyM.endDate}}</i></h6>
-        <button type="button" class="btn btn-warning m-1" id="btnReviews" routerLink="/review-browse/{{storyId}}/6/0"
-            >Vezi recenzii</button>
-        <button type="button" class="btn btn-dark m-1" id="btnChat" routerLink="/chat-room/{{storyId}}" hidden>Pagina de mesaje</button>
-        <button type="button" class="btn btn-success m-1" id="btnCreator" routerLink="/story-stats/{{storyId}}" hidden>Ești organizator. Vezi statistici</button>
-        <button type="button" class="btn btn-primary m-1" id="btnLogin" routerLink="/user-signin" hidden>Autentificare</button>
-        <button type="button" class="btn btn-primary m-1" id="btnRegister" (click)="btnRegisterClick()" hidden>Înscrie-te</button>
-        <button type="button" class="btn btn-danger m-1" id="btnYourReview" routerLink="/review-edit/{{storyId}}"
-            style="display: none">Recenzia ta</button>
+        <h6><i>Date Created: {{storyM.dateCreated}}</i></h6>
+        <h6><i>Genre: {{storyM.genre}}</i></h6>
+        <button type="button" class="btn btn-warning m-1" id="btnReviews" routerLink="/review-browse/{{storyId}}">See Reviews</button>
+        <button type="button" class="btn btn-dark m-1" id="btnChat" routerLink="/chat-room/{{storyId}}" hidden>Chat Page</button>
+        <button type="button" class="btn btn-success m-1" id="btnCreator" routerLink="/story-stats/{{storyId}}" hidden>View Stats</button>
+        <button type="button" class="btn btn-primary m-1" id="btnLogin" routerLink="/user-signin" hidden>Login</button>
+        <button type="button" class="btn btn-primary m-1" id="btnRegister" (click)="btnRegisterClick()" hidden>Register</button>
+        <button type="button" class="btn btn-danger m-1" id="btnYourReview" routerLink="/review-edit/{{storyId}}" style="display: none">Your Review</button>
         <p style="white-space: pre-wrap">{{storyM.description}}</p>
-        <a class="btn btn-outline-primary mb-3" href="{{storyM.url}}" target="_blank" role="button">Vezi site</a>
-        <iframe class="border-0 embed-responsive" [src]="'https://www.google.ro/maps/embed/v1/place?key=' + this.googleApiKey + '&q=' + storyM.location"
-            allowfullscreen></iframe>
-
+        <p style="white-space: pre-wrap">{{storyM.actualStory}}</p>
     </div>
 </div>

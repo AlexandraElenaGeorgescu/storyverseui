@@ -29,7 +29,7 @@ class LineInfo {
 }
 
 class PieInfo {
-    subscribedToThisEvent: number;
+    subscribedToThisStory: number;
     subscribedToOthers: number;
     subscribedBoth: number;
     subscribedTotal: number;
@@ -37,11 +37,11 @@ class PieInfo {
     othersRatio: number;
     bothRatio: number;
     constructor(data: number[]) {
-        this.subscribedToThisEvent = data[0];
+        this.subscribedToThisStory = data[0];
         this.subscribedToOthers = data[1];
         this.subscribedBoth = data[2];
         this.subscribedTotal = data[0] + data[1] + data[2];
-        this.thisRatio = (this.subscribedToThisEvent + 0.0) / this.subscribedTotal * 100;
+        this.thisRatio = (this.subscribedToThisStory + 0.0) / this.subscribedTotal * 100;
         this.othersRatio = (this.subscribedToOthers + 0.0) / this.subscribedTotal * 100;
         this.bothRatio = (this.subscribedBoth + 0.0) / this.subscribedTotal / 100;
         this.thisRatio = Math.round(this.thisRatio * 100000) / 100000;

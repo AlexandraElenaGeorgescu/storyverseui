@@ -3,13 +3,13 @@
         <div id="msg-div"></div>
         <br>
         <div class="input-group">
-            <input type="text" class="form-control" id="messageInput" placeholder="trimite mesaj..." (focus)="goBottom()" (keydown)="enterDown($event)">
+            <input type="text" class="form-control" id="messageInput" placeholder="send message..." (focus)="goBottom()" (keydown)="enterDown($event)">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button" (click)="sendMessage()"><b>&#8614;</b></button>
             </div>
         </div>
     </div>
 </div>
-<div id='goBottom' (click) = "goBottom()">
+<div id='goBottom' (click)="goBottom()">
     <span>&#8650;</span>
 </div>

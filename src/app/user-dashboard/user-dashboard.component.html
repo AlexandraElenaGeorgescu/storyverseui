@@ -1,45 +1,42 @@
 <div class="row align-items-center justify-content-center">
     <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
         <div class="alert alert-success" role="alert">
-            Bun venit, <b>{{myAcc.surname}} {{myAcc.name}}</b>
+            Welcome, <b>{{myAcc.surname}} {{myAcc.name}}</b>
         </div>
 
         <br>
 
-        <button type="button" class="btn btn-secondary disabled">Evenimentele tale</button>
+        <button type="button" class="btn btn-secondary disabled">Your Stories</button>
         <div class="btn-group btn-group-toggle my-1 mx-3" data-toggle="buttons">
             <label class="btn btn-primary" [ngClass]="{'active':listType=='registered-stories'}" routerLink="/user-dashboard/registered-stories/5/0">
-                <input type="radio" name="options" id="option1" autocomplete="off"> Înscris
+                <input type="radio" name="options" id="option1" autocomplete="off"> Registered
             </label>
             <label class="btn btn-primary" [ngClass]="{'active':listType=='reviewed-stories'}" routerLink="/user-dashboard/reviewed-stories/5/0">
-                <input type="radio" name="options" id="option2" autocomplete="off" checked='true'> Recenzii
+                <input type="radio" name="options" id="option2" autocomplete="off" checked='true'> Reviewed
             </label>
 
-            <label class="btn btn-primary" [ngClass]="{'active':listType=='created-stories'}" routerLink="/user-dashboard/created-storys/5/0">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Create
+            <label class="btn btn-primary" [ngClass]="{'active':listType=='created-stories'}" routerLink="/user-dashboard/created-stories/5/0">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Created
             </label>
         </div>
 
         <div class="btn-group m-0" role="group">
             <a routerLink="/user-dashboard/{{listType}}/{{pageSize}}/{{+pageId-1}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
-            <button type="button" class="btn btn-secondary disabled">Navigare</button>
+            <button type="button" class="btn btn-secondary disabled">Navigate</button>
             <a routerLink="/user-dashboard/{{listType}}/{{pageSize}}/{{+pageId+1}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
         </div>
 
         <ul class="list-group my-3">
             <a *ngFor="let story of stories" class="list-group-item list-group-item-action text-center" routerLink="/story-details/{{story.id}}">{{story.name}}</a>
-            <a *ngIf="nextBtnDisabled" class="list-group-item list-group-item-action text-center">Nu mai sunt elemente
-                de
-                afișat</a>
+            <a *ngIf="nextBtnDisabled" class="list-group-item list-group-item-action text-center">No more items to display</a>
         </ul>
 
-        <button type="button" class="btn btn-danger mb-5" routerLink="/user-signin">Deconectare</button>
+        <button type="button" class="btn btn-danger mb-5" routerLink="/user-signin">Logout</button>
 
         <br>
 
         <span>{{myAcc.email}}</span>
-        <input type="password" class="form-control" id="new-pass-input" placeholder="parolă nouă..." >
-        <button class="btn btn-warning" (click)="changePassBtnClick()">Schimbă parola</button>
-
+        <input type="password" class="form-control" id="new-pass-input" placeholder="new password..." >
+        <button class="btn btn-warning" (click)="changePassBtnClick()">Change Password</button>
     </div>
 </div>

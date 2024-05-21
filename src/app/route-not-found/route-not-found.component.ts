@@ -11,7 +11,7 @@ import { Title } from '@angular/platform-browser';
 export class RouteNotFoundComponent implements OnInit {
 
     constructor(private titleService: Title) {
-        this.titleService.setTitle('Pagina nu a fost găsită');
+        this.titleService.setTitle('Page Not Found');
     }
 
     ngOnInit() { }

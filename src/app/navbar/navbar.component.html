@@ -1,16 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" routerLink="/"><img src='../../favicon.ico'>&emsp;StoryVerse</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" routerLink="/">
+        <img src='../../favicon.ico' alt="Logo">&emsp;StoryVerse
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarToggler">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/story-browse/6/0">Stories</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/user-dashboard/registered-stories/5/0">Your account</a>
+                <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/user-dashboard/registered-stories/5/0">Your Account</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" (click)="triggerNavbarTogglerClick()" routerLink="/story-create">Create Story</a>
@@ -22,9 +24,9 @@
 
         <form class="form-inline my-2 my-lg-0">
             <div class="input-group">
-                <input type="text" class="form-control" id="searchText" placeholder="search for a specific story..." (keydown)="enterDown($event)">
+                <input type="text" class="form-control" id="searchText" placeholder="Search for a specific story..." (keydown)="enterDown($event)">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" (click)="search()"><b>&#8981;</b></button>
+                    <button class="btn btn-search" type="button" (click)="search()"><b>&#8981;</b></button>
                 </div>
             </div>
         </form>

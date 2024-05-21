@@ -5,28 +5,22 @@
             <div class="form-group">
                 <label for="userEmailFormControl">Email:</label>
                 <input type="email" class="form-control" id="userEmailFormControl" name="userEmail" [(ngModel)]="user.email"
-                    [email]="true" placeholder="ex: numeletau@companie.ro" #userEmailCheck="ngModel" maxlength=50
+                    [email]="true" placeholder="e.g., yourname@company.com" #userEmailCheck="ngModel" maxlength=50
                     required>
-                <div id="userEmailFormControlCheck" [hidden]="userEmailCheck.valid" class="alert alert-danger my-2" role="alert">Câmpul pentru adresa
-                    de
-                    email
-                    este obligatoriu!</div>
+                <div id="userEmailFormControlCheck" [hidden]="userEmailCheck.valid" class="alert alert-danger my-2" role="alert">Email address is required!</div>
             </div>
 
             <div class="form-group">
-                <label for="userPasswordFormControl">Parolă:</label>
+                <label for="userPasswordFormControl">Password:</label>
                 <input type="password" class="form-control" id="userPasswordFormControl" name="userPassword"
-                    [(ngModel)]="user.password" placeholder="parola aleasă când v-ați creat contul"
+                    [(ngModel)]="user.password" placeholder="the password you chose when creating your account"
                     #userPasswordCheck="ngModel" maxlength=50 required>
-                <div [hidden]="userPasswordCheck.valid" class="alert alert-danger my-2" role="alert">Câmpul pentru
-                    parolă
-                    este
-                    obligatoriu!</div>
+                <div [hidden]="userPasswordCheck.valid" class="alert alert-danger my-2" role="alert">Password is required!</div>
             </div>
 
-            <button type="submit" class="btn btn-primary mr-1 mb-1" [disabled]="!form.valid">Autentificare</button>
-            <a class="btn btn-success mr-1 mb-1" routerLink="/user-signup" role="button">Înregistrare</a>
-            <button class="btn btn-danger mr-1 mb-1" (click)="recoverEmailBtnClick()" onclick="return false">Recuperează parola</button>
+            <button type="submit" class="btn btn-primary mr-1 mb-1" [disabled]="!form.valid">Sign In</button>
+            <a class="btn btn-success mr-1 mb-1" routerLink="/user-signup" role="button">Sign Up</a>
+            <button class="btn btn-danger mr-1 mb-1" (click)="recoverEmailBtnClick()" onclick="return false">Recover Password</button>
         </form>
     </div>
 </div>

@@ -13,18 +13,17 @@
             <div class="form-group">
                 <input type="hidden" class="form-control" id="reviewRatingFormControl" name="reviewRating" [(ngModel)]="ratingCheck"
                     #reviewRatingCheck="ngModel" required>
-                <div [hidden]="reviewRatingCheck.valid" class="alert alert-danger my-2" role="alert">Evaluați evenimentul
-                    cu un număr de stele</div>
+                <div [hidden]="reviewRatingCheck.valid" class="alert alert-danger my-2" role="alert">Please rate the story with a number of stars</div>
             </div>
 
             <div class="form-group">
-                <label for="reviewOpinionFormControl">Impresia ta:</label>
+                <label for="reviewOpinionFormControl">Your Opinion:</label>
                 <textarea class="form-control" id="reviewOpinionFormControl" name="reviewOpinion" [(ngModel)]="review.opinion"
-                    placeholder="ex: bine organizat, oră convenabilă, prea aglomerat etc." #storyDescriptionCheck="ngModel" maxlength=10000 rows=10></textarea>
+                    placeholder="e.g., well organized, convenient time, too crowded, etc." #storyDescriptionCheck="ngModel" maxlength=10000 rows=10></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary mr-1" [disabled]="!form.valid">Publică</button>
-            <button type="button" class="btn btn-danger" (click)="deleteReview()">Șterge</button>
+            <button type="submit" class="btn btn-primary mr-1" [disabled]="!form.valid">Publish</button>
+            <button type="button" class="btn btn-danger" (click)="deleteReview()">Delete</button>
         </form>
 
     </div>
