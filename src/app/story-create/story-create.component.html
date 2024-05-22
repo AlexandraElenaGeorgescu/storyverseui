@@ -40,7 +40,7 @@
 
             <div class="form-group">
                 <label for="storyImageFormControl">Book Cover Image (optional):</label>
-                <input class="d-none" type="file" (change)="fileInput.files && selectFile(fileInput.files.toString())" #fileInput>
+                <input class="d-none" type="file" (change)="fileInput.files && selectFile(fileInput.files)" #fileInput>
                 <button type="button" class="btn btn-primary" (click)="fileInput.click()">Choose</button>
             </div>
 

@@ -64,28 +64,26 @@ class PieInfo {
   styleUrls: ['./story-stats.component.css'],
   providers: [DataService]
 })
-
 export class StoryStatsComponent implements OnInit {
     storyId: string;
-    reviwesInfo!: ReviewsInfo;
+    reviewsInfo!: ReviewsInfo;
     lineInfo!: LineInfo;
     pieInfo!: PieInfo;
 
   constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) { 
-    this.titleService.setTitle('Statistici eveniment');
+    this.titleService.setTitle('Story Statistics');
     this.storyId = this.route.snapshot.params['id'];
 
     this.dataService.get<any[]>('story/reviews-stats/' + this.storyId, resp => {
-        this.reviwesInfo = new ReviewsInfo(resp);
+        this.reviewsInfo = new ReviewsInfo(resp);
     }, error => {
-        this.utils.showMessage('A apărut o problemă!');
+        this.utils.showMessage('There was a problem!');
         console.log(`Error response: ${error}`);
     }, localStorage.getItem('user-token') ?? '');
 
     this.dataService.get<any[]>('story/line-chart/' + this.storyId, resp => {
             this.lineInfo = new LineInfo(resp[1]);
             new Chartist.Line('#chart1', {
-                    //labels: resp[1],
                     series: [
                         resp[0] as number 
                     ]
@@ -97,14 +95,13 @@ export class StoryStatsComponent implements OnInit {
                 });
                 
     }, error => {
-        this.utils.showMessage('A apărut o problemă!');
+        this.utils.showMessage('There was a problem!');
         console.log(`Error response: ${error}`);
     }, localStorage.getItem('user-token') ?? '');
 
     this.dataService.get<number[]>('story/pie-chart/' + this.storyId, resp => {
         this.pieInfo = new PieInfo(resp);
         new Chartist.Pie('#chart2', {
-            //labels: ['A', 'B', 'C'],
             series: resp
         }, {
             labelInterpolationFnc: () => {
@@ -112,13 +109,10 @@ export class StoryStatsComponent implements OnInit {
             }
         });
     }, error => {
-        this.utils.showMessage('A apărut o problemă!');
+        this.utils.showMessage('There was a problem!');
         console.log(`Error response: ${error}`);
     }, localStorage.getItem('user-token') ?? '');
   }
 
-  ngOnInit() {
-    
-  }
-
+  ngOnInit() { }
 }

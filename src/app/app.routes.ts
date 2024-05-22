@@ -22,9 +22,9 @@ export const routes: Routes = [
   { path: 'story-browse/:pageSize/:pageId', component: StoryBrowseComponent },
   { path: 'story-details/:id', component: StoryDetailsComponent },
   { path: 'story-stats/:id', component: StoryStatsComponent, canActivate: [AuthGuardService] },
-  { path: 'review-browse/:eventId/:pageSize/:pageId', component: ReviewBrowseComponent },
+  { path: 'review-browse/:storyId/:pageSize/:pageId', component: ReviewBrowseComponent },
   { path: 'review-edit/:id', component: ReviewEditComponent, canActivate: [AuthGuardService] },
-  { path: 'chat-room/:eventId', component: ChatRoomComponent, canActivate: [AuthGuardService] },
-  { path: '', redirectTo: 'event-browse/6/0', pathMatch: 'full' },
+  { path: 'chat-room/:storyId', component: ChatRoomComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: 'story-browse/6/0', pathMatch: 'full' },
   { path: '**', component: RouteNotFoundComponent }
 ];

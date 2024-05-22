@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common';
     styleUrls: ['./story-create.component.css'],
     providers: [DataService]
 })
+
 export class StoryCreateComponent implements OnInit {
     storyM: StoryModel = new StoryModel();
     fileToUpload: File | null = null;
@@ -37,7 +38,7 @@ export class StoryCreateComponent implements OnInit {
 
     onSubmit() {
         this.dataService.post<string>('story/create', storyId => {
-            this.uploadFile();
+            this.uploadFile(storyId);
             this.utils.showMessage('Story created successfully!');
             this.router.navigate(['/user-dashboard/created-stories']);
         }, error => {
@@ -46,22 +47,22 @@ export class StoryCreateComponent implements OnInit {
         }, this.storyM, localStorage.getItem('user-token') ?? "");
     }
 
-    selectFile(files: string) {
+    selectFile(files: FileList) {
         if (files.length === 0) {
             return;
         }
-
-        this.fileToUpload = <File><unknown>files[0];
+        this.fileToUpload = files[0];
     }
 
-    public uploadFile = () => {
-        if (this.fileToUpload == null)
+    public uploadFile(storyId: string) {
+        if (this.fileToUpload == null) {
             return;
+        }
 
         const formData = new FormData();
         formData.append('file', this.fileToUpload, this.fileToUpload.name);
 
-        this.dataService.post('story/upload-image', success => {}, error => {
+        this.dataService.post(`story/upload-image/${storyId}`, success => {}, error => {
             this.utils.showMessage('There was a problem uploading the image!');
             console.log(`Error response: ${error}`);
         }, formData, localStorage.getItem('user-token') ?? "");
