@@ -1,29 +1,36 @@
-<div class="row">
-    <div class="col-12">
-        <div class="alert alert-danger">
-            <span>
-                <b>{{reviewsInfo.nrReviews}}</b> users have given their opinions about this story. <br>
-                On average, this story received a rating of <b>{{reviewsInfo.averageRating}}</b> out of 5.
-            </span>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="alert alert-danger text-center">
+                <span>
+                    <b>{{reviewsInfo?.nrReviews}}</b> users have given their opinions about this story. <br>
+                    On average, this story received a rating of <b>{{reviewsInfo?.averageRating}}</b> out of 5.
+                </span>
+            </div>
         </div>
     </div>
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="alert alert-warning">
-            <span>The chart below shows the number of messages sent in the story chat between <b>{{lineInfo.startDate}}</b> and <b>{{lineInfo.endDate}}</b>.<br> A total of <b>{{lineInfo.total}} messages</b> were sent.</span>
+    <div class="row">
+        <div class="col-12 col-lg-6 mb-4">
+            <div class="alert alert-warning text-center">
+                <span>
+                    The chart below shows the number of messages sent in the story chat between <b>{{lineInfo?.startDate}}</b> and <b>{{lineInfo?.endDate}}</b>.<br>
+                    A total of <b>{{lineInfo?.total}} messages</b> were sent.
+                </span>
+            </div>
+            <div class="ct-chart ct-minor-second" id="chart1"></div>
         </div>
-        <div class="ct-chart ct-minor-second" id="chart1"></div>
-    </div>
-    
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="alert alert-primary">
-            <span>
-                Users registered for your stories: <b>{{pieInfo.subscribedTotal}}</b>, of which<br>
-                <b>{{pieInfo.subscribedToThisStory}} ({{pieInfo.thisRatio}}%)</b> registered only for this story (<b>RED</b>) <br>
-                <b>{{pieInfo.subscribedToOthers}} ({{pieInfo.othersRatio}}%)</b> registered only for other stories created by you (<b>PINK</b>) <br>
-                <b>{{pieInfo.subscribedBoth}} ({{pieInfo.bothRatio}}%)</b> registered for both this story and others created by you (<b>YELLOW</b>)
-            </span>
+
+        <div class="col-12 col-lg-6 mb-4">
+            <div class="alert alert-primary text-center">
+                <span>
+                    Users registered for your stories: <b>{{pieInfo?.subscribedTotal}}</b>, of which<br>
+                    <b>{{pieInfo?.subscribedToThisStory}} ({{pieInfo?.thisRatio}}%)</b> registered only for this story (<b>RED</b>) <br>
+                    <b>{{pieInfo?.subscribedToOthers}} ({{pieInfo?.othersRatio}}%)</b> registered only for other stories created by you (<b>PINK</b>) <br>
+                    <b>{{pieInfo?.subscribedBoth}} ({{pieInfo?.bothRatio}}%)</b> registered for both this story and others created by you (<b>YELLOW</b>)
+                </span>
+            </div>
+            <div class="ct-chart ct-minor-second" id="chart2"></div>
         </div>
-        <div class="ct-chart ct-minor-second" id="chart2"></div>
     </div>
 </div>

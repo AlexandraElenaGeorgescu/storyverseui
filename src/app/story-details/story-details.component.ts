@@ -33,7 +33,7 @@ export class StoryDetailsComponent implements OnInit {
 
         this.dataService.get<StoryModel>('story/details/' + this.storyId, serverEvent => {
             this.storyM = serverEvent;
-            dataService.get<string>('user/registration-status/' + this.storyId, serverRegistrationStatus => {
+            this.dataService.get<string>('user/registration-status/' + this.storyId, serverRegistrationStatus => {
                 this.registrationStatus = serverRegistrationStatus;
                 this.showBtns();
             }, error => {
@@ -132,6 +132,6 @@ export class StoryDetailsComponent implements OnInit {
     }
 
     getImageUrl(relativeUrl?: string): string {
-        return relativeUrl ? `http://localhost:50295/${relativeUrl}` : '/StaticFiles/Images/standard.jpg';
+        return relativeUrl ? `http://localhost:50295/${relativeUrl}` : 'http://localhost:50295/StaticFiles/Images/standard.jpg';
     }
 }

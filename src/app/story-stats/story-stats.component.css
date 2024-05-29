@@ -1,1 +1,24 @@
-  
+.container {
+    padding: 20px;
+}
+
+.alert {
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+.ct-chart {
+    height: 300px;
+}
+
+@media (min-width: 768px) {
+    .ct-chart {
+        height: 400px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .ct-chart {
+        height: 500px;
+    }
+}
