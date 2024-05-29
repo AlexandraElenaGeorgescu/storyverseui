@@ -23,30 +23,32 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [DataService]
 })
 export class StorySearchComponent implements OnInit {
-    stories: StoryModel[] = [];
-    pageSize: number;
-    pageId: number;
-    searchText: string;
-    prevBtnDisabled: boolean = false;
-    nextBtnDisabled: boolean = false;
+  stories: StoryModel[] = [];
+  pageSize!: number;
+  pageId!: number;
+  searchText!: string;
+  prevBtnDisabled: boolean = false;
+  nextBtnDisabled: boolean = false;
 
   constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
     this.titleService.setTitle('Search Stories');
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.pageSize = this.route.snapshot.params['pageSize'];
-    this.pageId = this.route.snapshot.params['pageId'];
-    this.searchText = this.route.snapshot.params['searchText'];
-
-    this.dataService.get<StoryModel[]>('story/search/' + this.pageSize + '/' + this.pageId + '/' + this.searchText, serverStories => {
-        this.stories = serverStories;
-        this.prevBtnDisabled = this.pageId == 0;
-        this.nextBtnDisabled = this.stories.length < this.pageSize; 
-    }, error => {
-        this.utils.showMessage('There was a problem!');
-        console.log(`Error response: ${error}`);
-     });
-   }
+  }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.pageSize = +params['pageSize'];
+      this.pageId = +params['pageId'];
+      this.searchText = params['searchText'];
+
+      this.dataService.get<StoryModel[]>('story/search/' + this.pageSize + '/' + this.pageId + '/' + this.searchText, serverStories => {
+        this.stories = serverStories;
+        this.prevBtnDisabled = this.pageId == 0;
+        this.nextBtnDisabled = this.stories.length < this.pageSize;
+      }, error => {
+        this.utils.showMessage('There was a problem!');
+        console.log(`Error response: ${error}`);
+      });
+    });
   }
 }

@@ -130,4 +130,8 @@ export class StoryDetailsComponent implements OnInit {
             }, undefined, localStorage.getItem('user-token') ?? "");
         }
     }
+
+    getImageUrl(relativeUrl?: string): string {
+        return relativeUrl ? `http://localhost:50295/${relativeUrl}` : '/StaticFiles/Images/standard.jpg';
+    }
 }

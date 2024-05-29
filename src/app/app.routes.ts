@@ -12,6 +12,7 @@ import { ReviewBrowseComponent } from './chat-room/review-browse/review-browse.c
 import { ReviewEditComponent } from './chat-room/review-edit/review-edit.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
+import { StorySearchComponent } from './story-search/story-search.component';
 
 export const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'story-details/:id', component: StoryDetailsComponent },
   { path: 'story-stats/:id', component: StoryStatsComponent, canActivate: [AuthGuardService] },
   { path: 'review-browse/:storyId/:pageSize/:pageId', component: ReviewBrowseComponent },
+  { path: 'story-search/:pageSize/:pageId/:searchText', component: StorySearchComponent },
   { path: 'review-edit/:id', component: ReviewEditComponent, canActivate: [AuthGuardService] },
   { path: 'chat-room/:storyId', component: ChatRoomComponent, canActivate: [AuthGuardService] },
   { path: '', redirectTo: 'story-browse/6/0', pathMatch: 'full' },

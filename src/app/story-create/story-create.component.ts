@@ -40,7 +40,7 @@ export class StoryCreateComponent implements OnInit {
         this.dataService.post<string>('story/create', storyId => {
             this.uploadFile(storyId);
             this.utils.showMessage('Story created successfully!');
-            this.router.navigate(['/user-dashboard/created-stories']);
+            this.router.navigate(['/user-dashboard/created-stories/5/0']);
         }, error => {
             this.utils.showMessage('There was a problem!');
             console.log(`Error response: ${error}`);
@@ -48,23 +48,24 @@ export class StoryCreateComponent implements OnInit {
     }
 
     selectFile(files: FileList) {
-        if (files.length === 0) {
-            return;
+        if (files.length > 0) {
+            this.fileToUpload = files.item(0);
         }
-        this.fileToUpload = files[0];
     }
 
     public uploadFile(storyId: string) {
         if (this.fileToUpload == null) {
             return;
         }
-
+    
         const formData = new FormData();
         formData.append('file', this.fileToUpload, this.fileToUpload.name);
-
-        this.dataService.post(`story/upload-image/${storyId}`, success => {}, error => {
+    
+        this.dataService.post(`story/upload-image/${storyId}`, (success) => {
+            // handle success
+        }, (error) => {
             this.utils.showMessage('There was a problem uploading the image!');
             console.log(`Error response: ${error}`);
         }, formData, localStorage.getItem('user-token') ?? "");
-    }
+    }    
 }

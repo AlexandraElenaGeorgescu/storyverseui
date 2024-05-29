@@ -28,7 +28,7 @@
 </div>
 
 <div class="btn-group m-0" role="group">
-    <a routerLink="/story-search/{{pageSize}}/{{+pageId-1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
+    <a routerLink="/story-search/{{pageSize}}/{{pageId-1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
     <button type="button" class="btn btn-secondary disabled">Stories</button>
-    <a routerLink="/story-search/{{pageSize}}/{{+pageId+1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
+    <a routerLink="/story-search/{{pageSize}}/{{pageId+1}}/{{searchText}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
 </div>
