@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
     providedIn: 'root'
 })
 export class DataService {
-    public getGoogleMapsAPiKey(): string { return "API_KEY_HERE"; }
     private baseUrl: string = 'http://localhost:50295/api/';
     public getWebSocketUrl() { return 'ws://localhost:50295/ws' }
     public getImageAbsoluteUrl(relativeUrl: string): string {return this.baseUrl.replace('api/', relativeUrl);}
