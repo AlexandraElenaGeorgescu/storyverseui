@@ -1,4 +1,4 @@
-export class StoryModel{
+export class StoryModel {
     id!: string;
     name!: string;
     dateCreated!: string;
@@ -6,6 +6,7 @@ export class StoryModel{
     description!: string;
     actualStory!: string;
     image?: string;
+    author!: string;
 
     constructor() {
         this.id = '';
@@ -15,5 +16,6 @@ export class StoryModel{
         this.actualStory = '';
         this.description = '';
         this.image = '';
+        this.author = '';
     }
 }
