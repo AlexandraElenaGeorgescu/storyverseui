@@ -1,1 +1,28 @@
- 
+ /* story-browse.component.css */
+
+.row {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-12 {
+    max-width: 400px;
+    width: 100%;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-select + .row {
+    margin-top: 10px;
+}

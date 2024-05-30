@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-@Component({ 
+@Component({
     standalone: true,
     imports: [
         RouterModule,
@@ -28,6 +28,8 @@ export class StoryBrowseComponent implements OnInit {
     pageId: number;
     prevBtnDisabled: boolean = false;
     nextBtnDisabled: boolean = false;
+    selectedGenre: string = '';
+    genres: string[] = ['SF', 'Fantasy', 'Mystery', 'Romance', 'Horror', 'Adventure', 'Comedy'];
 
     constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
         this.titleService.setTitle('Browse Stories');
@@ -35,15 +37,25 @@ export class StoryBrowseComponent implements OnInit {
         this.pageSize = this.route.snapshot.params['pageSize'];
         this.pageId = this.route.snapshot.params['pageId'];
         
-        this.dataService.get<StoryModel[]>('story/browse/' + this.pageSize + '/' + this.pageId, serverStories => {
-            this.stories = serverStories;
-            this.prevBtnDisabled = this.pageId == 0;
-            this.nextBtnDisabled = this.stories.length < this.pageSize; 
-        }, error => {
-            this.utils.showMessage('There was a problem!');
-            console.log(`Error response: ${error}`);
-         });
+        this.fetchStories();
     }
 
     ngOnInit() {}
+
+    fetchStories() {
+        const genreQuery = this.selectedGenre ? `?genre=${this.selectedGenre}` : '';
+        this.dataService.get<StoryModel[]>('story/browse/' + this.pageSize + '/' + this.pageId + genreQuery, serverStories => {
+            this.stories = serverStories;
+            this.prevBtnDisabled = this.pageId == 0;
+            this.nextBtnDisabled = this.stories.length < this.pageSize;
+        }, error => {
+            this.utils.showMessage('There was a problem!');
+            console.log(`Error response: ${error}`);
+        });
+    }
+
+    filterStories() {
+        this.pageId = 0; 
+        this.fetchStories();
+    }
 }

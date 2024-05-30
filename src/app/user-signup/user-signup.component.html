@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="row align-items-center justify-content-center">
+    <div class="row align-items-center justify-content-center" *ngIf="!emailSent">
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
             <form #form="ngForm" class="p-3" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="userEmailFormControl">Email:</label>
                     <input type="email" class="form-control" id="userEmailFormControl" name="userEmail" [(ngModel)]="user.email"
-                        [email]="true" placeholder="e.g., yourname@company.com" #userEmailCheck="ngModel" maxlength=50
+                        [email]="true" placeholder="e.g., yourname@company.com" #userEmailCheck="ngModel" maxlength="50"
                         required>
                     <div [hidden]="userEmailCheck.valid" class="alert alert-danger my-2" role="alert">Email address is required!</div>
                 </div>
@@ -14,7 +14,7 @@
                     <label for="userPasswordFormControl">Password:</label>
                     <input type="password" class="form-control" id="userPasswordFormControl" name="userPassword"
                         [(ngModel)]="user.password" placeholder="this will be required for sign in"
-                        #userPasswordCheck="ngModel" maxlength=50 required>
+                        #userPasswordCheck="ngModel" maxlength="50" required>
                     <div [hidden]="userPasswordCheck.valid" class="alert alert-danger my-2" role="alert">Password is required!</div>
                 </div>
 
@@ -28,19 +28,35 @@
                 <div class="form-group">
                     <label for="userNameFormControl">First Name:</label>
                     <input type="text" class="form-control" id="userNameFormControl" name="userName" [(ngModel)]="user.name"
-                        placeholder="first name..." #userNameCheck="ngModel" maxlength=50 required>
+                        placeholder="first name..." #userNameCheck="ngModel" maxlength="50" required>
                     <div [hidden]="userNameCheck.valid" class="alert alert-danger my-2" role="alert">First name is required!</div>
                 </div>
 
                 <div class="form-group">
                     <label for="userSurnameFormControl">Last Name:</label>
                     <input type="text" class="form-control" id="userSurnameFormControl" name="userSurname" [(ngModel)]="user.surname"
-                        placeholder="last name..." #userSurnameCheck="ngModel" maxlength=50 required>
+                        placeholder="last name..." #userSurnameCheck="ngModel" maxlength="50" required>
                     <div [hidden]="userSurnameCheck.valid" class="alert alert-danger my-2" role="alert">Last name is required!</div>
                 </div>
 
                 <button type="submit" class="btn btn-primary mr-1 mb-1" [disabled]="!form.valid">Sign Up</button>
                 <a class="btn" routerLink="/user-signin" role="button">I already have an account</a>
+            </form>
+        </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center" *ngIf="emailSent">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
+            <form #verifyForm="ngForm" class="p-3" (ngSubmit)="verifyCode()">
+                <div class="form-group">
+                    <label for="verificationCodeFormControl">Verification Code:</label>
+                    <input type="text" class="form-control" id="verificationCodeFormControl" name="verificationCode" [(ngModel)]="verificationCode"
+                        placeholder="Enter the verification code sent" #verificationCodeCheck="ngModel" maxlength="6" required>
+                    <div [hidden]="verificationCodeCheck.valid" class="alert alert-danger my-2" role="alert">Verification code is required!</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-1 mb-1" [disabled]="!verifyForm.valid">Verify Code</button>
+                <a class="btn" (click)="emailSent = false">Back to Sign Up</a>
             </form>
         </div>
     </div>

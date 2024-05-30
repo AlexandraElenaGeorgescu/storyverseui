@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
-import { UserSigninComponent } from './user-signin/user-signin.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { StoryCreateComponent } from './story-create/story-create.component';
@@ -13,6 +12,7 @@ import { ReviewEditComponent } from './chat-room/review-edit/review-edit.compone
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { StorySearchComponent } from './story-search/story-search.component';
+import { UserSigninComponent } from './user-signin/user-signin.component';
 
 export const routes: Routes = [
   { path: 'about', component: AboutComponent },

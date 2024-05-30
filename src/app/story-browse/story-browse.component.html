@@ -5,6 +5,15 @@
 </div>
 
 <div class="row">
+    <div class="col-12">
+        <select class="form-select" [(ngModel)]="selectedGenre" (change)="filterStories()">
+            <option value="">All Genres</option>
+            <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let story of stories">
         <div class="card my-3">
             <div class="card-body">

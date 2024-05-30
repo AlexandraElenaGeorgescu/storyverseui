@@ -25,6 +25,8 @@ import { CommonModule } from '@angular/common';
 export class UserSignupComponent implements OnInit {
     user: UserModel = new UserModel();
     birthday!: Date;
+    verificationCode: string = '';
+    emailSent: boolean = false;
 
     constructor(private titleService: Title, private router: Router, private dataService: DataService, private utils: UtilsService) {
         localStorage.removeItem('user-token');
@@ -35,16 +37,29 @@ export class UserSignupComponent implements OnInit {
 
     onSubmit() {
         this.user.birthday = this.utils.getStringDate(this.birthday);
-        this.dataService.post<string>('user/signup', response => {
-            this.utils.showMessage('You have successfully signed up!');
-            this.router.navigate(['user-dashboard/registered-stories/5/0']);
-        }, error => { 
-            if (error == 'Email used') {
+        var textInput: HTMLInputElement = document.getElementById("userEmailFormControl") as HTMLInputElement;
+        this.dataService.post<string>('user/send-verification-code', response => {
+            this.emailSent = true;
+            this.utils.showMessage('Verification code sent to your email');
+        }, error => {
+            if (error === 'Email already used') {
                 this.utils.showMessage('A user with this email address already exists!');
             } else {
                 this.utils.showMessage('There was a problem!');
             }
             console.log(`Error response: ${error}`);
-        }, this.user);
+        }, { email: textInput.value });
+        
+    }
+
+    verifyCode() {
+        const payload = { VerificationCode: this.verificationCode, User: this.user };
+        this.dataService.post<string>('user/verify-code-and-signup', response => {
+            this.utils.showMessage('You have successfully signed up!');
+            this.router.navigate(['user-dashboard/registered-stories/5/0']);
+        }, error => {
+            this.utils.showMessage('Invalid verification code!');
+            console.log(`Error response: ${error}`);
+        }, payload);
     }
 }
