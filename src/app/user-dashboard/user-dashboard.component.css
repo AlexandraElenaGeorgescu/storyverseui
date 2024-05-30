@@ -53,11 +53,32 @@ button:hover, .btn:hover {
 }
 
 .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #efe8dc; /* Light cream background for list items */
-    color: #3b2716;
+    color: #3b2716; /* Dark brown text */
     font-family: 'Garamond', serif;
     border: none;
     margin: 5px 0;
+    padding: 10px; /* Add padding for better spacing */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.list-group-item .list-group-item-action {
+    flex: 1;
+    text-align: left;
+    text-decoration: none;
+    color: #3b2716; /* Dark brown text */
+}
+
+.list-group-item .list-group-item-action:hover {
+    text-decoration: underline;
+}
+
+.list-group-item.text-center {
+    justify-content: center;
 }
 
 input {
@@ -89,4 +110,47 @@ span {
     color: #3b2716;
     display: block;
     margin-top: 10px;
+}
+
+.email {
+    font-family: 'Garamond', serif;
+    color: #3b2716; /* Dark brown text */
+}
+.email-section {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.email-section span {
+    font-family: 'Garamond', serif;
+    color: #3b2716; /* Dark brown text */
+    margin-right: 10px;
+}
+
+.email-section input {
+    flex: 1;
+    font-family: 'Garamond', serif;
+    border: 1px solid #c1a57b; /* Soft brown border */
+    border-radius: 5px;
+    margin-top: 0; /* Adjust margin for better alignment */
+    padding: 5px;
+}
+
+.email-section input::placeholder {
+    color: #a39374; /* Faded brown placeholder text */
+}
+
+.email-section button {
+    background-color: #e8b979; /* Soft gold background */
+    border-color: #a65e00; /* Darker gold border */
+    color: #3b2716; /* Dark brown text */
+    font-family: 'Garamond', serif;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.email-section button:hover {
+    background-color: #d79754; /* Darker gold on hover */
+    border-color: #8b4e00;
 }

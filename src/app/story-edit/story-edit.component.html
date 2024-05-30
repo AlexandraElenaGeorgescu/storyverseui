@@ -1,0 +1,50 @@
+<div class="row align-items-center justify-content-center">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="storyNameFormControl">Name of Story:</label>
+                <input type="text" class="form-control" id="storyNameFormControl" name="storyName" [(ngModel)]="storyM.name"
+                    placeholder="e.g., The Great Adventure" #storyNameCheck="ngModel" maxlength=50 required>
+                <div [hidden]="storyNameCheck.valid" class="alert alert-danger my-2" role="alert">This field is required!</div>
+            </div>
+
+            <div class="form-group">
+                <label for="storyDateFormControl">Date Created:</label>
+                <input type="date" class="form-control" id="storyDateFormControl" name="storyDate"
+                    [(ngModel)]="storyM.dateCreated" #storyDateCheck="ngModel" required>
+                <div [hidden]="storyDateCheck.valid" class="alert alert-danger my-2" role="alert">This field is required!</div>
+            </div>
+
+            <div class="form-group">
+                <label for="storyGenreFormControl">Genre:</label>
+                <input type="text" class="form-control" id="storyGenreFormControl" name="storyGenre" [(ngModel)]="storyM.genre"
+                    placeholder="e.g., Fantasy, Mystery" #storyGenreCheck="ngModel" maxlength=50 required>
+                <div [hidden]="storyGenreCheck.valid" class="alert alert-danger my-2" role="alert">This field is required!</div>
+            </div>
+
+            <div class="form-group">
+                <label for="storyDescriptionFormControl">Description:</label>
+                <textarea class="form-control" id="storyDescriptionFormControl" name="storyDescription" [(ngModel)]="storyM.description"
+                    placeholder="Enter a brief description" #storyDescriptionCheck="ngModel" rows=5
+                    maxlength=1000 required></textarea>
+                <div [hidden]="storyDescriptionCheck.valid" class="alert alert-danger my-2" role="alert">This field is required!</div>
+            </div>
+
+            <div class="form-group">
+                <label for="actualStoryFormControl">Actual Story:</label>
+                <textarea class="form-control" id="actualStoryFormControl" name="actualStory" [(ngModel)]="storyM.actualStory"
+                    placeholder="Write your story here..." #actualStoryCheck="ngModel" rows=15
+                    maxlength=10000 required></textarea>
+                <div [hidden]="actualStoryCheck.valid" class="alert alert-danger my-2" role="alert">This field is required!</div>
+            </div>
+
+            <div class="form-group">
+                <label for="storyImageFormControl">Book Cover Image (optional):</label>
+                <input class="d-none" type="file" (change)="fileInput.files && selectFile(fileInput.files)" #fileInput>
+                <button type="button" class="btn btn-primary" (click)="fileInput.click()">Choose</button>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+        </form>
+    </div>
+</div>

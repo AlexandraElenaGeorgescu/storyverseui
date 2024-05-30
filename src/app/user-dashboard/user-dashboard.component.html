@@ -28,7 +28,13 @@
             </div>
 
             <ul class="list-group my-3">
-                <a *ngFor="let story of stories" class="list-group-item list-group-item-action text-center" routerLink="/story-details/{{story.id}}">{{story.name}}</a>
+                <li *ngFor="let story of stories" class="list-group-item d-flex justify-content-between align-items-center">
+                    <a class="list-group-item-action text-center" routerLink="/story-details/{{story.id}}">{{story.name}}</a>
+                    <div *ngIf="listType === 'created-stories'" class="action-buttons">
+                        <button class="btn btn-warning btn-sm" (click)="editStory(story.id)">Edit</button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteStory(story.id)">Delete</button>
+                    </div>
+                </li>
                 <a *ngIf="nextBtnDisabled" class="list-group-item list-group-item-action text-center">No more items to display</a>
             </ul>
 
@@ -36,9 +42,11 @@
 
             <br>
 
-            <span>{{myAcc.email}}</span>
-            <input type="password" class="form-control" id="new-pass-input" placeholder="new password..." >
-            <button class="btn btn-warning" (click)="changePassBtnClick()">Change Password</button>
+            <span class="email-section">
+                <span class="email">{{myAcc.email}}</span>
+                <input type="password" class="form-control" id="new-pass-input" placeholder="new password...">
+                <button class="btn btn-warning" (click)="changePassBtnClick()">Change Password</button>
+            </span>
         </div>
     </div>
 </div>

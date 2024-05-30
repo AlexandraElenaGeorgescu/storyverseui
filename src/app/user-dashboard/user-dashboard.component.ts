@@ -71,4 +71,19 @@ export class UserDashboardComponent implements OnInit {
             console.log(`Error response: ${error}`);
         }, passWrap, localStorage.getItem('user-token') || undefined);
     }
+    
+    editStory(storyId: string): void {
+        this.router.navigate(['/edit-story', storyId]);
+    }
+
+    deleteStory(storyId: string): void {
+        const token = localStorage.getItem('user-token') || undefined;
+        this.dataService.delete<any>(`story/${storyId}`, (response: any) => {
+            this.utils.showMessage('Story deleted successfully!');
+            this.stories = this.stories.filter(story => story.id !== storyId);
+        }, (error: any) => {
+            this.utils.showMessage('There was a problem!');
+            console.log(`Error response: ${error}`);
+        }, token);
+    }
 }

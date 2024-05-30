@@ -13,6 +13,7 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { RouteNotFoundComponent } from './route-not-found/route-not-found.component';
 import { StorySearchComponent } from './story-search/story-search.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
+import { StoryEditComponent } from './story-edit/story-edit.component';
 
 export const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'user-signin', component: UserSigninComponent },
   { path: 'user-dashboard/:listType/:pageSize/:pageId', component: UserDashboardComponent, canActivate: [AuthGuardService] },
   { path: 'story-create', component: StoryCreateComponent, canActivate: [AuthGuardService] },
+  { path: 'edit-story/:id', component: StoryEditComponent, canActivate: [AuthGuardService] },
   { path: 'story-browse/:pageSize/:pageId', component: StoryBrowseComponent },
   { path: 'story-details/:id', component: StoryDetailsComponent },
   { path: 'story-stats/:id', component: StoryStatsComponent, canActivate: [AuthGuardService] },
