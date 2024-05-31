@@ -71,7 +71,7 @@ export class UserDashboardComponent implements OnInit {
             console.log(`Error response: ${error}`);
         }, passWrap, localStorage.getItem('user-token') || undefined);
     }
-    
+
     editStory(storyId: string): void {
         this.router.navigate(['/edit-story', storyId]);
     }
@@ -86,4 +86,31 @@ export class UserDashboardComponent implements OnInit {
             console.log(`Error response: ${error}`);
         }, token);
     }
+
+    updateNameAndSurname(): void {
+        const updatedUser: UserModel = { ...this.myAcc }; // Clone the current user details
+        updatedUser.name = (<HTMLInputElement>document.getElementById('new-name-input')).value;
+        updatedUser.surname = (<HTMLInputElement>document.getElementById('new-surname-input')).value;
+    
+        this.dataService.patch<any>('user/update-name', (response: any) => {
+            this.utils.showMessage('Name and surname updated successfully!');
+            this.myAcc = updatedUser; // Update the local user object
+        }, (error: any) => {
+            this.utils.showMessage('There was a problem updating your name and surname!');
+            console.log(`Error response: ${error}`);
+        }, updatedUser, localStorage.getItem('user-token') || undefined);
+    }
+
+    deleteAccount(): void {
+        const token = localStorage.getItem('user-token') || undefined;
+        this.dataService.delete<any>('user/delete-account', (response: any) => {
+            this.utils.showMessage('Account and related data deleted successfully!');
+            localStorage.removeItem('user-token');
+            this.router.navigate(['/user-signin']);
+        }, (error: any) => {
+            this.utils.showMessage('There was a problem deleting your account!');
+            console.log(`Error response: ${error}`);
+        }, token);
+    }
+    
 }

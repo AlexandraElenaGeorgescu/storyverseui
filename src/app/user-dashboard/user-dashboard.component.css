@@ -1,5 +1,3 @@
-/* user-dashboard.component.css */
-
 .container {
     background-color: #f4f1ea; /* Light parchment background color */
     border: 1px solid #c1a57b; /* Soft brown border */
@@ -116,19 +114,22 @@ span {
     font-family: 'Garamond', serif;
     color: #3b2716; /* Dark brown text */
 }
-.email-section {
+.email-section,
+.name-surname-section {
     display: flex;
     align-items: center;
     margin-top: 10px;
 }
 
-.email-section span {
+.email-section span,
+.name-surname-section span {
     font-family: 'Garamond', serif;
     color: #3b2716; /* Dark brown text */
     margin-right: 10px;
 }
 
-.email-section input {
+.email-section input,
+.name-surname-section input {
     flex: 1;
     font-family: 'Garamond', serif;
     border: 1px solid #c1a57b; /* Soft brown border */
@@ -137,11 +138,13 @@ span {
     padding: 5px;
 }
 
-.email-section input::placeholder {
+.email-section input::placeholder,
+.name-surname-section input::placeholder {
     color: #a39374; /* Faded brown placeholder text */
 }
 
-.email-section button {
+.email-section button,
+.name-surname-section button {
     background-color: #e8b979; /* Soft gold background */
     border-color: #a65e00; /* Darker gold border */
     color: #3b2716; /* Dark brown text */
@@ -150,7 +153,8 @@ span {
     margin-left: 10px;
 }
 
-.email-section button:hover {
+.email-section button:hover,
+.name-surname-section button:hover {
     background-color: #d79754; /* Darker gold on hover */
     border-color: #8b4e00;
 }
