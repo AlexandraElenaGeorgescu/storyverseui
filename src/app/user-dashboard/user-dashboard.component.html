@@ -43,16 +43,16 @@
             <br>
 
             <span class="email-section">
-                <span class="email">{{myAcc.email}}</span>
+                <span class="email"><b>{{myAcc.email}}</b></span>
                 <input type="password" class="form-control" id="new-pass-input" placeholder="new password...">
                 <button class="btn btn-warning" (click)="changePassBtnClick()">Change Password</button>
             </span>
 
             <span class="name-surname-section">
-                <span class="label">New Name:</span>
+                <span class="label"><b>New Name:</b></span>
                 <input type="text" class="form-control" id="new-name-input" placeholder="New Name" [(ngModel)]="myAcc.name">
 
-                <span class="label">New Surname:</span>
+                <span class="label"><b>New Surname:</b></span>
                 <input type="text" class="form-control" id="new-surname-input" placeholder="New Surname" [(ngModel)]="myAcc.surname">
 
                 <button class="btn btn-warning" (click)="updateNameAndSurname()">Update Name and Surname</button>
