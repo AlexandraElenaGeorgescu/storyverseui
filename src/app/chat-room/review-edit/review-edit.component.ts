@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReviewModel } from '../../models/review.model';
 import { Title } from '@angular/platform-browser';
 import { UtilsService } from '../../services/utils.service';
@@ -28,7 +28,7 @@ export class ReviewEditComponent implements OnInit {
     storyId: string;
     ratingCheck: Boolean = false;
 
-    constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
+    constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService, private router: Router,) {
         this.titleService.setTitle('Your Review');
         this.storyId = this.route.snapshot.params['id'];
         
@@ -46,6 +46,9 @@ export class ReviewEditComponent implements OnInit {
     onSubmit() {
         this.dataService.put('review/edit/' + this.storyId, success => {
             this.utils.showMessage('Your review has been updated!');
+            setTimeout(() => {
+                this.router.navigate(['/story-details', this.storyId]);
+            } , 20);
         }, error => {
             this.utils.showMessage('There was a problem!');
             console.log(`Error response: ${error}`);
@@ -57,6 +60,9 @@ export class ReviewEditComponent implements OnInit {
             this.review = new ReviewModel();
             this.updateRating(this.review.rating);
             this.utils.showMessage('Your review has been deleted!');
+            setTimeout(() => {
+                this.router.navigate(['/story-details', this.storyId]);
+            } , 20);
         }, error => { 
             this.utils.showMessage('There was a problem!');
             console.log(`Error response: ${error}`);

@@ -5,9 +5,9 @@
 </div>
 
 <div class="row">
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let review of reviews; let i = index">
+    <div class="col-lg-6 col-xl-4" *ngFor="let review of reviews; let i = index">
 
-        <div class="card text-center my-3">
+        <div class="cards card text-center my-3">
             <div class="card-header">
                 <h1>
                     <span class="mx-1" [ngClass]="{'text-warning':review.rating > 0}">&#9733;</span>
@@ -17,29 +17,7 @@
                     <span class="mx-1" [ngClass]="{'text-warning':review.rating > 4}">&#9733;</span></h1>
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{review.opinion.substr(0,30)}}...</h5>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modalLong-' + i">
-                    Open
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id='modalLong-{{i}}' tabindex="-1" role="dialog" aria-labelledby="modalLongTitle"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLongTitle"></h5>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">&larr;&nbsp;Back</button>
-                            </div>
-                            <div class="modal-body">
-                                {{review.opinion}}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">&larr;&nbsp;Back</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h5 class="card-title">{{ review.opinion }}</h5>
             </div>
             <div class="card-footer text-muted">
                 {{review.lastEdit}}, {{review.userName}}
