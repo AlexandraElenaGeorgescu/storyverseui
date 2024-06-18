@@ -4,7 +4,7 @@
     <a routerLink="/story-browse/{{pageSize}}/{{+pageId+1}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
 </div>
 
-<div class="row">
+<div class="row mb-3">
     <div class="col-12">
         <select class="form-select" [(ngModel)]="selectedGenre" (change)="filterStories()">
             <option value="">All Genres</option>
@@ -14,28 +14,22 @@
 </div>
 
 <div class="row">
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let story of stories">
-        <div class="card my-3">
+    <div class="story col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4" *ngFor="let story of stories">
+        <div class="card h-100">
+            <img [src]="getImageUrl(story.image)" class="card-img-top" alt="Book Cover">
             <div class="card-body">
                 <h5 class="card-title">{{story.name}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{story.dateCreated}}</h6>
                 <h6 class="card-subtitle mb-2 text-muted">{{story.genre}}</h6>
                 <h6 class="card-subtitle mb-2 text-muted">{{story.author}}</h6> 
-                <p class="card-text">{{story.description.substr(0,40)}}...</p>
-                <button type="button" class="btn btn-primary" routerLink="/story-details/{{story.id}}">Details</button>
+                <p class="card-text">{{story.description.substr(0,20)}}...</p>
+                <button type="button" class="btn btn-primary" [routerLink]="['/story-details', story.id]">Details</button>
             </div>
         </div>
     </div>
-
-    <div class="col-12">
-        <div class="card-body my-3" *ngIf="nextBtnDisabled">
-            <h5 class="card-title invisible">______________________________</h5>
-            <h6 class="card-subtitle mb-2 text-muted invisible">______________________________</h6>
-            <p class="card-text">No more items to display</p>
-            <button type="button" class="btn btn-primary invisible">_____</button>
-        </div>
-    </div>
 </div>
+
+<br>
 
 <div class="btn-group m-0" role="group">
     <a routerLink="/story-browse/{{pageSize}}/{{+pageId-1}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>

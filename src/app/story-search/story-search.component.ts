@@ -51,4 +51,8 @@ export class StorySearchComponent implements OnInit {
       });
     });
   }
+
+  getImageUrl(relativeUrl?: string): string {
+    return relativeUrl ? `http://localhost:50295/${relativeUrl}` : 'http://localhost:50295/StaticFiles/Images/standard.jpg';
+  }
 }

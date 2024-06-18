@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { StoryModel } from '../models/story.model';
@@ -26,8 +26,9 @@ export class StoryDetailsComponent implements OnInit {
     storyId: string;
     storyM: StoryModel = new StoryModel();
     registrationStatus: string = "";
+    fontSize: number = 16;
 
-    constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
+    constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService, private renderer: Renderer2) {
         this.titleService.setTitle('Story Details');
         this.storyId = this.route.snapshot.params['id'];
 
@@ -133,5 +134,13 @@ export class StoryDetailsComponent implements OnInit {
 
     getImageUrl(relativeUrl?: string): string {
         return relativeUrl ? `http://localhost:50295/${relativeUrl}` : 'http://localhost:50295/StaticFiles/Images/standard.jpg';
+    }
+    
+    changeFontSize(action: string) {
+        if (action === 'increase') {
+            this.fontSize += 2;
+        } else if (action === 'decrease') {
+            this.fontSize -= 2;
+        }
     }
 }
