@@ -1,7 +1,17 @@
 <div class="btn-group m-0" role="group">
-    <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId-1}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
+    <a *ngIf="!prevBtnDisabled" [routerLink]="['/review-browse', storyId, pageSize, pageId - 1]" class="btn btn-primary">
+        &lt;&lt;&lt;
+    </a>
+    <a *ngIf="prevBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
+        &lt;&lt;&lt;
+    </a>
     <button type="button" class="btn btn-secondary disabled">Reviews</button>
-    <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId+1}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
+    <a *ngIf="!nextBtnDisabled" [routerLink]="['/review-browse', storyId, pageSize, pageId + 1]" class="btn btn-primary">
+        &gt;&gt;&gt;
+    </a>
+    <a *ngIf="nextBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
+        &gt;&gt;&gt;
+    </a>
 </div>
 
 <div class="row">
@@ -37,7 +47,17 @@
 </div>
 
 <div class="btn-group m-0" role="group">
-    <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId-1}}" class="btn btn-primary" [ngClass]="{'disabled':prevBtnDisabled}">&lt;&lt;&lt;</a>
+    <a *ngIf="!prevBtnDisabled" [routerLink]="['/review-browse', storyId, pageSize, pageId - 1]" class="btn btn-primary">
+        &lt;&lt;&lt;
+    </a>
+    <a *ngIf="prevBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
+        &lt;&lt;&lt;
+    </a>
     <button type="button" class="btn btn-secondary disabled">Reviews</button>
-    <a routerLink="/review-browse/{{storyId}}/{{pageSize}}/{{+pageId+1}}" class="btn btn-primary" [ngClass]="{'disabled':nextBtnDisabled}">&gt;&gt;&gt;</a>
+    <a *ngIf="!nextBtnDisabled" [routerLink]="['/review-browse', storyId, pageSize, pageId + 1]" class="btn btn-primary">
+        &gt;&gt;&gt;
+    </a>
+    <a *ngIf="nextBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
+        &gt;&gt;&gt;
+    </a>
 </div>

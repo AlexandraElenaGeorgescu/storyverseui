@@ -34,8 +34,8 @@ export class StoryBrowseComponent implements OnInit {
     constructor(private sanitizer: DomSanitizer, private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
         this.titleService.setTitle('Browse Stories');
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.pageSize = this.route.snapshot.params['pageSize'];
-        this.pageId = this.route.snapshot.params['pageId'];
+        this.pageSize = +this.route.snapshot.params['pageSize'] || 10;
+        this.pageId = +this.route.snapshot.params['pageId'] || 0;
         
         this.fetchStories();
     }
@@ -46,7 +46,7 @@ export class StoryBrowseComponent implements OnInit {
         const genreQuery = this.selectedGenre ? `?genre=${this.selectedGenre}` : '';
         this.dataService.get<StoryModel[]>('story/browse/' + this.pageSize + '/' + this.pageId + genreQuery, serverStories => {
             this.stories = serverStories;
-            this.prevBtnDisabled = this.pageId == 0;
+            this.prevBtnDisabled = this.pageId <= 0;
             this.nextBtnDisabled = this.stories.length < this.pageSize;
         }, error => {
             this.utils.showMessage('There was a problem!');

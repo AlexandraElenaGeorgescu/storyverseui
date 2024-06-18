@@ -7,6 +7,7 @@ import { UtilsService } from '../services/utils.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AngularEditorConfig, AngularEditorModule } from '@kolkov/angular-editor';
 
 @Component({
     standalone: true,
@@ -15,7 +16,8 @@ import { CommonModule } from '@angular/common';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        CommonModule
+        CommonModule,
+        AngularEditorModule
     ],
     selector: 'app-story-edit',
     templateUrl: './story-edit.component.html',
@@ -29,6 +31,20 @@ export class StoryEditComponent implements OnInit {
 
     public progress!: number;
     public message!: string;
+
+    editorConfig: AngularEditorConfig = {
+        editable: true,
+        spellcheck: true,
+        height: 'auto',
+        minHeight: '200px',
+        placeholder: 'Enter text here...',
+        translate: 'no',
+        defaultParagraphSeparator: 'p',
+        defaultFontName: 'Arial',
+        toolbarHiddenButtons: [
+          []
+        ]
+      };
 
     constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, private utils: UtilsService, private http: HttpClient) {
         this.titleService.setTitle('Edit Story');
