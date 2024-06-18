@@ -12,6 +12,8 @@
                 <h5 class="card-title">{{story.name}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{story.dateCreated}}</h6>
                 <h6 class="card-subtitle mb-2 text-muted">{{story.genre}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{story.author}}</h6> 
+                <img *ngIf="story.authorAvatarUrl" [src]="story.authorAvatarUrl" alt="Author Avatar" class="author-avatar">
                 <button type="button" class="btn btn-primary" [routerLink]="['/story-details', story.id]">Details</button>
             </div>
         </div>

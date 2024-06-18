@@ -3,11 +3,13 @@ export class ReviewModel {
     opinion: string;
     lastEdit: string;
     userName: string;
+    avatarUrl: string; 
 
     constructor() {
         this.rating = 0;
         this.opinion = '';
-        this.lastEdit = '2015-10-20 22:45';
+        this.lastEdit = '';
         this.userName = '';
+        this.avatarUrl = ''; 
     }
 }

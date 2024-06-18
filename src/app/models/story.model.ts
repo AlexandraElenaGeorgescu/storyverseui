@@ -1,12 +1,13 @@
 export class StoryModel {
-    id!: string;
-    name!: string;
-    dateCreated!: string;
-    genre!: string;
-    description!: string;
-    actualStory!: string;
+    id: string;
+    name: string;
+    dateCreated: string;
+    genre: string;
+    description: string;
+    actualStory: string;
     image?: string;
-    author!: string;
+    author: string;
+    authorAvatarUrl: string; 
 
     constructor() {
         this.id = '';
@@ -17,5 +18,6 @@ export class StoryModel {
         this.description = '';
         this.image = '';
         this.author = '';
+        this.authorAvatarUrl = ''; 
     }
 }

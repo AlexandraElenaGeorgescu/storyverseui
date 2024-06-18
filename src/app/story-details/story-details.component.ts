@@ -44,13 +44,16 @@ export class StoryDetailsComponent implements OnInit {
             this.dataService.get<string>('user/registration-status/' + this.storyId, serverRegistrationStatus => {
                 this.registrationStatus = serverRegistrationStatus;
                 this.showBtns();
+                this.applyFontSizeToContent(); // Ensure font size is applied after content load
             }, error => {
                 this.registrationStatus = 'unauthenticated';
                 this.showBtns();
+                this.applyFontSizeToContent(); // Ensure font size is applied even on error
                 console.log(`Error response: ${error}`);
             }, localStorage.getItem('user-token') ?? '');
         }, error => {
             this.utils.showMessage('There was a problem!');
+            this.applyFontSizeToContent(); // Ensure font size is applied even on error
             console.log(`Error response: ${error}`);
         });
     }
@@ -144,7 +147,28 @@ export class StoryDetailsComponent implements OnInit {
     }
 
     sanitizeContent(content: string): SafeHtml {
-        return this.sanitizer.bypassSecurityTrustHtml(content);
+        return this.sanitizer.bypassSecurityTrustHtml(this.sanitizeAndCleanContent(content));
+    }
+
+    sanitizeAndCleanContent(content: string): string {
+        // Create a temporary DOM element to manipulate the content
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = content;
+
+        // Remove all inline styles recursively
+        this.removeInlineStyles(tempElement);
+
+        // Return the cleaned HTML
+        return tempElement.innerHTML;
+    }
+
+    removeInlineStyles(element: HTMLElement) {
+        element.removeAttribute('style'); // Remove inline styles
+
+        // Recursively remove inline styles from child elements
+        Array.from(element.children).forEach(child => {
+            this.removeInlineStyles(child as HTMLElement);
+        });
     }
 
     changeFontSize(action: string) {
@@ -153,16 +177,20 @@ export class StoryDetailsComponent implements OnInit {
         } else if (action === 'decrease') {
             this.fontSize -= 2;
         }
-        document.documentElement.style.setProperty('--dynamic-font-size', `${this.fontSize}px`);
-        this.applyFontSizeToSanitizedContent();
+        this.applyFontSizeToContent(); // Apply font size after changing it
     }
 
-    applyFontSizeToSanitizedContent() {
-        const styleSheet = document.styleSheets[0] as CSSStyleSheet;
-        const cssRule = `:root { --dynamic-font-size: ${this.fontSize}px; }`;
-        if (styleSheet.cssRules.length > 0 && (styleSheet.cssRules[0] as CSSStyleRule).selectorText === ':root') {
-            styleSheet.deleteRule(0);
-        }
-        styleSheet.insertRule(cssRule, 0);
+    applyFontSizeToContent() {
+        const contentContainers = document.querySelectorAll('.content-modal');
+        contentContainers.forEach(container => {
+            this.applyFontSizeRecursively(container as HTMLElement, `${this.fontSize}px`);
+        });
+    }
+
+    applyFontSizeRecursively(element: HTMLElement, fontSize: string) {
+        this.renderer.setStyle(element, 'fontSize', fontSize);
+        Array.from(element.children).forEach(child => {
+            this.applyFontSizeRecursively(child as HTMLElement, fontSize);
+        });
     }
 }

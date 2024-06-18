@@ -6,7 +6,6 @@
 
 <div class="row">
     <div class="col-lg-6 col-xl-4" *ngFor="let review of reviews; let i = index">
-
         <div class="cards card text-center my-3">
             <div class="card-header">
                 <h1>
@@ -14,27 +13,26 @@
                     <span class="mx-1" [ngClass]="{'text-warning':review.rating > 1}">&#9733;</span>
                     <span class="mx-1" [ngClass]="{'text-warning':review.rating > 2}">&#9733;</span>
                     <span class="mx-1" [ngClass]="{'text-warning':review.rating > 3}">&#9733;</span>
-                    <span class="mx-1" [ngClass]="{'text-warning':review.rating > 4}">&#9733;</span></h1>
+                    <span class="mx-1" [ngClass]="{'text-warning':review.rating > 4}">&#9733;</span>
+                </h1>
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ review.opinion }}</h5>
             </div>
             <div class="card-footer text-muted">
+                <img *ngIf="review.avatarUrl" [src]="review.avatarUrl" alt="Avatar" class="avatar-img"> <!-- Add this line -->
                 {{review.lastEdit}}, {{review.userName}}
             </div>
         </div>
-
     </div>
     
     <div class="col-12">
-
         <div class="card-body my-3" *ngIf="nextBtnDisabled">
             <h5 class="card-title invisible">______________________________</h5>
             <h6 class="card-subtitle mb-2 text-muted invisible">______________________________</h6>
             <p class="card-text">No more items to display</p>
             <button type="button" class="btn btn-primary invisible">_____</button>
         </div>
-        
     </div>
 </div>
 

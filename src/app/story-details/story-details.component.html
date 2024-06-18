@@ -18,11 +18,11 @@
             </div>
             <hr>
             <div class="story-modal">
-                <div class="story-description content-modal" [ngStyle]="{'font-size.px': fontSize}">
+                <div class="story-description content-modal">
                     <div [innerHTML]="sanitizeContent(storyM.description)"></div>
                 </div>
                 <hr>
-                <div class="story-content content-modal" [ngStyle]="{'font-size.px': fontSize}">
+                <div class="story-content content-modal">
                     <div [innerHTML]="sanitizeContent(storyM.actualStory)"></div>
                 </div>
             </div>

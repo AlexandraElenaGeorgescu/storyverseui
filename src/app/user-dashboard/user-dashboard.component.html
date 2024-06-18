@@ -2,20 +2,36 @@
     <div class="row align-items-center justify-content-center">
         <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
             <div class="alert alert-success" role="alert">
-                Welcome, <b>{{myAcc.surname}} {{myAcc.name}}</b>
+                Welcome, <b>{{myAcc.surname}} {{myAcc.name}}</b> - {{currentDate | date:'fullDate'}}
             </div>
-
             <br>
 
-            <button type="button" class="btn btn-secondary disabled">Your Stories</button>
+            <div class="profile-section text-center">
+                <img [src]="myAcc.avatar || 'assets/default-avatar.png'" alt="Profile Picture" class="profile-img">
+                <div><b>{{myAcc.email}}</b></div>
+                <div>Birthday: {{myAcc.birthday}}</div>
+            </div>
+
+            <div class="avatar-selection my-3 text-center">
+                <h5>Select an Avatar:</h5>
+                <div class="avatar-list">
+                    <img *ngFor="let avatar of avatars"
+                         [src]="avatar"
+                         alt="Avatar"
+                         class="avatar-option"
+                         [class.selected]="avatar === myAcc.avatar"
+                         (click)="selectAvatar(avatar)">
+                </div>
+                <button class="btn btn-warning mt-3" (click)="updateAvatar()" title="Update Avatar">Update Avatar</button>
+            </div>
+
             <div class="btn-group btn-group-toggle my-1 mx-3" data-toggle="buttons">
                 <label class="btn btn-primary" [ngClass]="{'active':listType=='registered-stories'}" routerLink="/user-dashboard/registered-stories/5/0">
                     <input type="radio" name="options" id="option1" autocomplete="off"> Registered
                 </label>
                 <label class="btn btn-primary" [ngClass]="{'active':listType=='reviewed-stories'}" routerLink="/user-dashboard/reviewed-stories/5/0">
-                    <input type="radio" name="options" id="option2" autocomplete="off" checked='true'> Reviewed
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Reviewed
                 </label>
-
                 <label class="btn btn-primary" [ngClass]="{'active':listType=='created-stories'}" routerLink="/user-dashboard/created-stories/5/0">
                     <input type="radio" name="options" id="option3" autocomplete="off"> Created
                 </label>
@@ -29,38 +45,83 @@
 
             <ul class="list-group my-3">
                 <li *ngFor="let story of stories" class="list-group-item d-flex justify-content-between align-items-center">
-                    <a class="list-group-item-action text-center" routerLink="/story-details/{{story.id}}">{{story.name}}</a>
+                    <div class="story-details">
+                        <a class="list-group-item-action text-center" routerLink="/story-details/{{story.id}}">{{story.name}}</a>
+                        <div class="story-meta">Created on: {{story.dateCreated | date:'mediumDate'}}</div>
+                        <div class="story-excerpt">{{story.genre}}</div>
+                    </div>
                     <div *ngIf="listType === 'created-stories'" class="action-buttons">
-                        <button class="btn btn-warning btn-sm" (click)="editStory(story.id)">Edit</button>
-                        <button class="btn btn-danger btn-sm" (click)="deleteStory(story.id)">Delete</button>
+                        <button class="btn btn-warning btn-sm" (click)="editStory(story.id)" title="Edit Story">Edit</button>
+                        <button class="btn btn-danger btn-sm" (click)="confirmDeleteStory(story.id)" title="Delete Story">Delete</button>
                     </div>
                 </li>
                 <a *ngIf="nextBtnDisabled" class="list-group-item list-group-item-action text-center">No more items to display</a>
             </ul>
 
-            <button type="button" class="btn btn-danger mb-5" routerLink="/user-signin">Logout</button>
+            <div class="text-center my-4">
+                <button type="button" class="btn btn-danger mb-5" routerLink="/user-signin" title="Logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
 
-            <br>
-
-            <span class="email-section">
+            <div class="email-section my-4">
                 <span class="email"><b>{{myAcc.email}}</b></span>
                 <input type="password" class="form-control" id="new-pass-input" placeholder="new password...">
-                <button class="btn btn-warning" (click)="changePassBtnClick()">Change Password</button>
-            </span>
+                <br>
+                <button class="btn btn-warning" (click)="changePassBtnClick()" title="Change Password">Change Password</button>
+            </div>
 
-            <span class="name-surname-section">
-                <span class="label"><b>New Name:</b></span>
-                <input type="text" class="form-control" id="new-name-input" placeholder="New Name" [(ngModel)]="myAcc.name">
+            <div class="name-surname-section my-4">
+                <div class="form-group">
+                    <label for="new-name-input"><b>New Name:</b></label>
+                    <input type="text" class="form-control" id="new-name-input" placeholder="New Name" [(ngModel)]="myAcc.name">
+                </div>
+                <div class="form-group">
+                    <label for="new-surname-input"><b>New Surname:</b></label>
+                    <input type="text" class="form-control" id="new-surname-input" placeholder="New Surname" [(ngModel)]="myAcc.surname">
+                </div>
+                <button class="btn btn-warning" (click)="updateNameAndSurname()" title="Update Name and Surname">Update Name and Surname</button>
+            </div>
 
-                <span class="label"><b>New Surname:</b></span>
-                <input type="text" class="form-control" id="new-surname-input" placeholder="New Surname" [(ngModel)]="myAcc.surname">
-
-                <button class="btn btn-warning" (click)="updateNameAndSurname()">Update Name and Surname</button>
-            </span>
-
-        <div class="delete-account-section mt-4">
-                <button class="btn btn-danger" (click)="deleteAccount()">Delete Account</button>
+            <div class="delete-account-section my-4 text-center">
+                <button class="btn btn-danger" (click)="confirmDeleteAccount()" title="Delete Account">Delete Account</button>
+            </div>
         </div>
+    </div>
+
+    <!-- Modal for deleting story -->
+    <div class="modal" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" (click)="closeModal('confirmDeleteModal')" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this story?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeModal('confirmDeleteModal')">Cancel</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteStory()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for deleting account -->
+    <div class="modal" id="confirmDeleteAccountModal" tabindex="-1" aria-labelledby="confirmDeleteAccountModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteAccountModalLabel">Confirm Account Deletion</h5>
+                    <button type="button" class="btn-close" (click)="closeModal('confirmDeleteAccountModal')" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete your account? This action cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeModal('confirmDeleteAccountModal')">Cancel</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteAccount()">Delete</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
