@@ -1,27 +1,31 @@
-<div class="row align-items-center justify-content-center">
-    <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-        <img *ngIf="storyM.image || getImageUrl()" [src]="getImageUrl(storyM.image)" class="img-fluid rounded" alt="Book Cover">
-        <h1>{{storyM.name}}</h1>
-        <h6><i>Date Created: {{storyM.dateCreated}}</i></h6>
-        <h6><i>Genre: {{storyM.genre}}</i></h6>
-        <button type="button" class="btn btn-warning m-1" id="btnReviews" [routerLink]="['/review-browse', storyId, 6, 0]">See Reviews</button>
-        <button type="button" class="btn btn-dark m-1" id="btnChat" [routerLink]="['/chat-room', storyId]" hidden>Chat Page</button>
-        <button type="button" class="btn btn-success m-1" id="btnCreator" [routerLink]="['/story-stats', storyId]" hidden>View Stats</button>
-        <button type="button" class="btn btn-primary m-1" id="btnLogin" [routerLink]="['/user-signin']" hidden>Login</button>
-        <button type="button" class="btn btn-primary m-1" id="btnRegister" (click)="btnRegisterClick()" hidden>Register</button>
-        <button type="button" class="btn btn-danger m-1" id="btnYourReview" [routerLink]="['/review-edit', storyId]" style="display: none">Your Review</button>
-        <hr>
-        <div class="font-size-controls">
-            <button (click)="changeFontSize('increase')" class="btn-size-increase">A+</button>
-            <button (click)="changeFontSize('decrease')" class="btn-size-decrease">A-</button>
-        </div>
-        <hr>
-        <div class="story-description content-modal" [ngStyle]="{'font-size.px': fontSize}">
-            <p>{{storyM.description}}</p>
-        </div>
-        <hr>
-        <div class="story-content content-modal" [ngStyle]="{'font-size.px': fontSize}">
-            <p>{{storyM.actualStory}}</p>
+<div class="container mt-5">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+            <img *ngIf="storyM.image || getImageUrl()" [src]="getImageUrl(storyM.image)" class="img-fluid rounded" alt="Book Cover">
+            <h1>{{storyM.name}}</h1>
+            <h6><i>Date Created: {{storyM.dateCreated}}</i></h6>
+            <h6><i>Genre: {{storyM.genre}}</i></h6>
+            <button type="button" class="btn btn-warning m-1" id="btnReviews" [routerLink]="['/review-browse', storyId, 6, 0]">See Reviews</button>
+            <button type="button" class="btn btn-dark m-1" id="btnChat" [routerLink]="['/chat-room', storyId]" hidden>Chat Page</button>
+            <button type="button" class="btn btn-success m-1" id="btnCreator" [routerLink]="['/story-stats', storyId]" hidden>View Stats</button>
+            <button type="button" class="btn btn-primary m-1" id="btnLogin" [routerLink]="['/user-signin']" hidden>Login</button>
+            <button type="button" class="btn btn-primary m-1" id="btnRegister" (click)="btnRegisterClick()" hidden>Register</button>
+            <button type="button" class="btn btn-danger m-1" id="btnYourReview" [routerLink]="['/review-edit', storyId]" style="display: none">Your Review</button>
+            <hr>
+            <div class="font-size-controls">
+                <button (click)="changeFontSize('increase')" class="btn-size-increase">A+</button>
+                <button (click)="changeFontSize('decrease')" class="btn-size-decrease">A-</button>
+            </div>
+            <hr>
+            <div class="story-modal">
+                <div class="story-description content-modal" [ngStyle]="{'font-size.px': fontSize}">
+                    <div [innerHTML]="sanitizeContent(storyM.description)"></div>
+                </div>
+                <hr>
+                <div class="story-content content-modal" [ngStyle]="{'font-size.px': fontSize}">
+                    <div [innerHTML]="sanitizeContent(storyM.actualStory)"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

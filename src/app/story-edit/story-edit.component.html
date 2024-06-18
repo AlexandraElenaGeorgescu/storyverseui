@@ -9,13 +9,6 @@
             </div>
 
             <div class="form-group">
-                <label for="storyDateFormControl">Date Created:</label>
-                <input type="date" class="form-control" id="storyDateFormControl" name="storyDate"
-                    [(ngModel)]="storyM.dateCreated" #storyDateCheck="ngModel" required>
-                <div [hidden]="storyDateCheck.valid" class="alert alert-danger my-2" role="alert">This field is required!</div>
-            </div>
-
-            <div class="form-group">
                 <label for="storyGenreFormControl">Genre:</label>
                 <input type="text" class="form-control" id="storyGenreFormControl" name="storyGenre" [(ngModel)]="storyM.genre"
                     placeholder="e.g., Fantasy, Mystery" #storyGenreCheck="ngModel" maxlength=50 required>

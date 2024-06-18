@@ -6,6 +6,10 @@ body {
     font-size: var(--text-base-size);
 }
 
+.container {
+    max-width: 100%;
+}
+
 .content-modal {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
@@ -15,6 +19,31 @@ body {
     border: 1px solid #e0e0e0;
     background-size: cover;
     font-family: 'Garamond', 'Times New Roman', serif;
+    word-wrap: break-word; /* Ensure long words wrap within the container */
+    font-size: var(--dynamic-font-size, 16px);
+}
+
+.font-size-controls button {
+    background-color: #f8f9fa;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.font-size-controls button:hover {
+    background-color: #e2e6ea;
+}
+
+:root {
+    --dynamic-font-size: 16px;
+}
+
+.content-modal {
+    font-size: var(--dynamic-font-size);
 }
 
 .font-size-controls button {

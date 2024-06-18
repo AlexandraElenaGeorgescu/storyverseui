@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { StoryModel } from '../models/story.model';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,7 +31,7 @@ export class StoryBrowseComponent implements OnInit {
     selectedGenre: string = '';
     genres: string[] = ['SF', 'Fantasy', 'Mystery', 'Romance', 'Horror', 'Adventure', 'Comedy'];
 
-    constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
+    constructor(private sanitizer: DomSanitizer, private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService) {
         this.titleService.setTitle('Browse Stories');
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.pageSize = this.route.snapshot.params['pageSize'];
@@ -61,5 +61,9 @@ export class StoryBrowseComponent implements OnInit {
 
     getImageUrl(relativeUrl?: string): string {
         return relativeUrl ? `http://localhost:50295/${relativeUrl}` : 'http://localhost:50295/StaticFiles/Images/standard.jpg';
+    }
+
+    sanitizeContent(content: string): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(content);
     }
 }

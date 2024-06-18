@@ -2,7 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { StoryModel } from '../models/story.model';
-import { Title } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { UtilsService } from '../services/utils.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +28,14 @@ export class StoryDetailsComponent implements OnInit {
     registrationStatus: string = "";
     fontSize: number = 16;
 
-    constructor(private titleService: Title, private route: ActivatedRoute, private dataService: DataService, public utils: UtilsService, private renderer: Renderer2) {
+    constructor(
+        private sanitizer: DomSanitizer,
+        private titleService: Title,
+        private route: ActivatedRoute,
+        private dataService: DataService,
+        public utils: UtilsService,
+        private renderer: Renderer2
+    ) {
         this.titleService.setTitle('Story Details');
         this.storyId = this.route.snapshot.params['id'];
 
@@ -135,12 +142,27 @@ export class StoryDetailsComponent implements OnInit {
     getImageUrl(relativeUrl?: string): string {
         return relativeUrl ? `http://localhost:50295/${relativeUrl}` : 'http://localhost:50295/StaticFiles/Images/standard.jpg';
     }
-    
+
+    sanitizeContent(content: string): SafeHtml {
+        return this.sanitizer.bypassSecurityTrustHtml(content);
+    }
+
     changeFontSize(action: string) {
         if (action === 'increase') {
             this.fontSize += 2;
         } else if (action === 'decrease') {
             this.fontSize -= 2;
         }
+        document.documentElement.style.setProperty('--dynamic-font-size', `${this.fontSize}px`);
+        this.applyFontSizeToSanitizedContent();
+    }
+
+    applyFontSizeToSanitizedContent() {
+        const styleSheet = document.styleSheets[0] as CSSStyleSheet;
+        const cssRule = `:root { --dynamic-font-size: ${this.fontSize}px; }`;
+        if (styleSheet.cssRules.length > 0 && (styleSheet.cssRules[0] as CSSStyleRule).selectorText === ':root') {
+            styleSheet.deleteRule(0);
+        }
+        styleSheet.insertRule(cssRule, 0);
     }
 }

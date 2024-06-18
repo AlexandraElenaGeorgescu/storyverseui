@@ -11,11 +11,11 @@
 }
 
 .story { 
-    height: 410px;
+    height: 370px;
 }
 
 .card-img-top {
-    max-height: 200px;
+    max-height: 160px;
     object-fit: cover;
 }
 
