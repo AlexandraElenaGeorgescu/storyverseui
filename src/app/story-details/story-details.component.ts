@@ -163,9 +163,10 @@ export class StoryDetailsComponent implements OnInit {
     }
 
     removeInlineStyles(element: HTMLElement) {
-        element.removeAttribute('style'); // Remove inline styles
-
-        // Recursively remove inline styles from child elements
+        // Set font size directly
+        this.renderer.setStyle(element, 'fontSize', `${this.fontSize}px`);
+        
+        // Recursively remove inline styles and set font size
         Array.from(element.children).forEach(child => {
             this.removeInlineStyles(child as HTMLElement);
         });
@@ -183,14 +184,7 @@ export class StoryDetailsComponent implements OnInit {
     applyFontSizeToContent() {
         const contentContainers = document.querySelectorAll('.content-modal');
         contentContainers.forEach(container => {
-            this.applyFontSizeRecursively(container as HTMLElement, `${this.fontSize}px`);
-        });
-    }
-
-    applyFontSizeRecursively(element: HTMLElement, fontSize: string) {
-        this.renderer.setStyle(element, 'fontSize', fontSize);
-        Array.from(element.children).forEach(child => {
-            this.applyFontSizeRecursively(child as HTMLElement, fontSize);
+            this.removeInlineStyles(container as HTMLElement);
         });
     }
 }

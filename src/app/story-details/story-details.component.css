@@ -20,7 +20,6 @@ body {
     background-size: cover;
     font-family: 'Garamond', 'Times New Roman', serif;
     word-wrap: break-word; /* Ensure long words wrap within the container */
-    font-size: var(--dynamic-font-size) !important; /* Ensure it overrides inline styles */
 }
 
 .font-size-controls button {
