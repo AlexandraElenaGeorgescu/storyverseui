@@ -14,9 +14,11 @@ import { RouteNotFoundComponent } from './route-not-found/route-not-found.compon
 import { StorySearchComponent } from './story-search/story-search.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 import { StoryEditComponent } from './story-edit/story-edit.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 export const routes: Routes = [
   { path: 'about', component: AboutComponent },
+  { path: 'notifications', component: NotificationsComponent},
   { path: 'user-signup', component: UserSignupComponent },
   { path: 'user-signin', component: UserSigninComponent },
   { path: 'user-dashboard/:listType/:pageSize/:pageId', component: UserDashboardComponent, canActivate: [AuthGuardService] },

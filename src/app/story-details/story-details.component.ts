@@ -187,4 +187,20 @@ export class StoryDetailsComponent implements OnInit {
             this.removeInlineStyles(container as HTMLElement);
         });
     }
+
+bookmarkStory(storyId: string): void {
+    const token = localStorage.getItem('user-token') || undefined;
+    this.dataService.patch<any>(
+        `story/bookmark-story/${storyId}`, 
+        (response: any) => {
+            this.utils.showMessage('Story bookmarked successfully!');
+        }, 
+        (error: any) => {
+            this.utils.showMessage('There was a problem bookmarking the story!');
+            console.log(`Error response: ${error}`);
+        }, 
+        {}, 
+        token
+    );
+}
 }

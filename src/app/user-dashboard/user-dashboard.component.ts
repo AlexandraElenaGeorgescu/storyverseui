@@ -55,6 +55,8 @@ export class UserDashboardComponent implements OnInit {
         'assets/17.png',
     ];
     selectedAvatar: string | undefined;
+    bookmarkedStories: StoryModel[] = [];
+    recommendations: StoryModel[] = [];
 
     constructor(private titleService: Title, private router: Router, private route: ActivatedRoute, private dataService: DataService, private utils: UtilsService) {
         this.titleService.setTitle('Your Account');
@@ -67,9 +69,9 @@ export class UserDashboardComponent implements OnInit {
 
         this.dataService.get<StoryModel[]>('user/' + this.listType + '/' + this.pageSize + '/' + this.pageId, (serverStories: StoryModel[]) => {
             this.stories = serverStories;
-            this.prevBtnDisabled = this.pageId == 0;
+            this.prevBtnDisabled = this.pageId <= 0;
             this.nextBtnDisabled = this.stories.length < this.pageSize;
-        }, (error: any) => {
+            }, (error: any) => {
             this.utils.showMessage('There was a problem!');
             console.log(`Error response: ${error}`);
         }, token);
@@ -84,7 +86,30 @@ export class UserDashboardComponent implements OnInit {
         }, token);
     }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.loadBookmarkedStories();
+        this.loadRecommendations();
+    }
+    
+    loadBookmarkedStories(): void {
+        const token = localStorage.getItem('user-token') || undefined;
+        this.dataService.get<StoryModel[]>('story/bookmarked-stories', (serverStories: StoryModel[]) => {
+            this.bookmarkedStories = serverStories;
+        }, (error: any) => {
+            this.utils.showMessage('There was a problem loading bookmarked stories!');
+            console.log(`Error response: ${error}`);
+        }, token);
+    }
+    
+    loadRecommendations(): void {
+        const token = localStorage.getItem('user-token') || undefined;
+        this.dataService.get<StoryModel[]>('story/recommendations', (serverStories: StoryModel[]) => {
+            this.recommendations = serverStories;
+        }, (error: any) => {
+            this.utils.showMessage('There was a problem loading recommendations!');
+            console.log(`Error response: ${error}`);
+        }, token);
+    }    
 
     changePassBtnClick(): void {
         const newPass: string = (document.getElementById("new-pass-input") as HTMLInputElement).value;

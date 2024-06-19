@@ -1,0 +1,70 @@
+/* Container Styles */
+.list-group {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #f9f5ec;
+    border: 2px solid #d4b483;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+/* No Notifications Message */
+.no-notifications {
+    text-align: center;
+    font-style: italic;
+    color: #6b4f1e;
+    padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Notification Item Styles */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #d4b483;
+    transition: background-color 0.3s;
+    background: #fdfdf5;
+}
+
+/* Notification Message Styles */
+.list-group-item span {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    color: #4b2e13;
+}
+
+/* Read Notification Styles */
+.list-group-item span.text-muted {
+    color: #a29584;
+    text-decoration: line-through;
+}
+
+/* Mark as Read Button Styles */
+.btn-primary {
+    background-color: #8b5e34;
+    border: 1px solid #8b5e34;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #6b4f1e;
+}
+
+/* Hover Effect */
+.list-group-item:hover {
+    background-color: #f2e9da;
+}
+
+/* Remove Last Border */
+.list-group-item:last-child {
+    border-bottom: none;
+}

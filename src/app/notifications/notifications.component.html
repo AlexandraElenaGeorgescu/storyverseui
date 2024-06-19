@@ -1,0 +1,9 @@
+<div *ngIf="notifications.length === 0" class="no-notifications">No notifications</div>
+<ul *ngIf="notifications.length > 0" class="list-group">
+  <li *ngFor="let notification of notifications" class="list-group-item">
+    <span [ngClass]="{'text-muted': notification.read}">
+      {{ notification.message }} - {{ notification.date | date:'short' }}
+    </span>
+    <button *ngIf="!notification.read" (click)="markAsRead(notification.id)" class="btn btn-sm btn-primary">Mark as read</button>
+  </li>
+</ul>

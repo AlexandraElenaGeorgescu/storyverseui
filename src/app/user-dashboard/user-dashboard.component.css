@@ -1,4 +1,4 @@
-.container {
+.container.library-theme {
     background-color: #f4f1ea; /* Light parchment background color */
     border: 1px solid #c1a57b; /* Soft brown border */
     border-radius: 8px;
@@ -6,28 +6,65 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     margin: 20px auto;
+    font-family: 'Garamond', serif;
 }
 
-.alert {
+.welcome-message {
     background-color: #d7bfae; /* Soft gold background */
     color: #3b2716; /* Dark brown text color */
-    font-family: 'Garamond', serif; /* Classic bookish font */
     border-radius: 5px;
     padding: 15px;
+    font-size: 1.2em;
 }
+
+/* Existing styles */
+
+.profile-section {
+    margin-bottom: 20px;
+    text-align: center; /* Center the profile section */
+}
+
+.profile-section div {
+    font-size: 1.2em;
+    color: #3b2716;
+}
+
+.rounded-profile-img {
+    border-radius: 50%; /* Makes the image circular */
+    border: 3px solid #c1a57b; /* Soft brown border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 150px; /* Set a width for the image */
+    height: 150px; /* Set a height for the image */
+    object-fit: cover; /* Ensure the image covers the area */
+    margin-bottom: 15px; /* Space below the image */
+    background-color: #fdfaf2; /* Slightly lighter background */
+    padding: 5px; /* Padding around the image */
+}
+
 
 .profile-section {
     margin-bottom: 20px;
 }
 
 .profile-section div {
-    font-family: 'Garamond', serif;
     font-size: 1.2em;
     color: #3b2716;
 }
 
+.avatar-selection {
+    background-color: #fdfaf2; /* Slightly lighter background for the avatar selection area */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 1.5em;
+    color: #3b2716;
+    margin-bottom: 10px;
+}
+
 .btn-group-toggle .btn {
-    font-family: 'Garamond', serif;
     background-color: #d7bfae;
     border-color: #3b2716;
     color: #3b2716;
@@ -41,7 +78,6 @@
 }
 
 button, .btn {
-    font-family: 'Garamond', serif;
     background-color: #3b2716;
     color: #f4f1ea;
     border: 1px solid #c1a57b;
@@ -82,7 +118,6 @@ button:hover, .btn:hover {
     align-items: center;
     background-color: #efe8dc; /* Light cream background for list items */
     color: #3b2716; /* Dark brown text */
-    font-family: 'Garamond', serif;
     border: none;
     margin: 5px 0;
     padding: 10px; /* Add padding for better spacing */
@@ -101,16 +136,26 @@ button:hover, .btn:hover {
     text-decoration: underline;
 }
 
+.input-group, .form-group {
+    margin-top: 20px;
+}
+
 input {
-    font-family: 'Garamond', serif;
     border: 1px solid #c1a57b;
     border-radius: 5px;
-    margin-top: 10px;
     padding: 5px;
 }
 
 input::placeholder {
     color: #a39374; /* Faded brown placeholder text */
+}
+
+.email-section, .name-surname-section, .delete-account-section {
+    background-color: #fdfaf2; /* Slightly lighter background */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .btn-warning {
@@ -126,7 +171,6 @@ input::placeholder {
 }
 
 span, label {
-    font-family: 'Garamond', serif;
     color: #3b2716;
     display: block;
     margin-top: 10px;
@@ -137,6 +181,7 @@ span, label {
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
+    flex-wrap: wrap; /* Wrap avatars to new line */
 }
 
 .avatar-option {
@@ -167,16 +212,16 @@ span, label {
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
     outline: 0;
-}
-
-.modal-dialog {
+    }
+    
+    .modal-dialog {
     position: relative;
     margin: 10% auto;
     max-width: 500px;
     pointer-events: none;
-}
-
-.modal-content {
+    }
+    
+    .modal-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -187,57 +232,34 @@ span, label {
     border-radius: 0.3rem;
     outline: 0;
     box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-}
-
-.modal-header, .modal-footer {
+    }
+    
+    .modal-header, .modal-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
     border-bottom: 1px solid #dee2e6;
     border-top: 1px solid #dee2e6;
-}
-
-.modal-body {
+    }
+    
+    .modal-body {
     position: relative;
     flex: 1 1 auto;
     padding: 1rem;
-}
-
-.btn-close {
+    }
+    
+    .btn-close {
     background: none;
     border: none;
     font-size: 1.5rem;
     line-height: 1;
     color: #000;
     opacity: 0.5;
-}
-
-.btn-close:hover {
+    }
+    
+    .btn-close
+    {
     color: #000;
     opacity: 0.75;
-}
-
-.avatar-list {
-    display:block;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.avatar-option {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
-}
-
-.avatar-option:hover {
-    border-color: #a89360; 
-}
-
-.avatar-option.selected {
-    border-color: #3b2716;
-}
+    }
