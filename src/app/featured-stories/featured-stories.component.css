@@ -1,0 +1,147 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f6fa;
+    color: #2d3436;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #4b2308;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background-color: #4b2308;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+h3 {
+    color: #ba9546;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.featured-stories-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.story-card {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.story-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ba9546;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.story-details {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.story-details img {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.story-info {
+    flex: 1;
+}
+
+.story-card p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.story-card .author {
+    font-size: 1em;
+    font-style: italic;
+    color: #ba9546;
+    margin-bottom: 10px;
+}
+
+.story-card div {
+    font-size: 1em;
+    line-height: 1.8;
+    color: #2d3436;
+}
+
+.story-card h3 {
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .featured-stories-container {
+        padding: 15px;
+    }
+
+    .story-card {
+        padding: 15px;
+    }
+
+    .story-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .story-details img {
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    .story-card p,
+    .story-card .author,
+    .story-card div {
+        font-size: 1em;
+    }
+}

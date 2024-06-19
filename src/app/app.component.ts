@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,16 @@ import { NavbarComponent } from './navbar/navbar.component';
     NavbarComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers: [ThemeService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'storyverse';
+
+  constructor(private themeService: ThemeService) {}
+
+  ngOnInit() {
+    this.themeService.applyTheme();
+  }
 }
+

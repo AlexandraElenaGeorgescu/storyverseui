@@ -3,19 +3,24 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ThemeService } from '../services/theme.service';
 @Component({
   standalone: true,
   imports: [CommonModule, RouterModule, HttpClientModule],
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  providers: []
+  providers: [ThemeService]
 })
 export class NavbarComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private themeService: ThemeService) {}
 
   ngOnInit() {}
 
+  toggleDarkMode() {
+    this.themeService.toggleTheme();
+  }
+  
   search() {
     const textInput: HTMLInputElement = document.getElementById("searchText") as HTMLInputElement;
     const searchText: string = textInput.value.replace('\\', ' ').replace('/', ' ');
