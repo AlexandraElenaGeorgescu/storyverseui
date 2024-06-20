@@ -1,6 +1,6 @@
 .container.library-theme {
-    background-color: #f4f1ea; /* Light parchment background color */
-    border: 1px solid #c1a57b; /* Soft brown border */
+    background-color: #f4f1ea; 
+    border: 1px solid #c1a57b; 
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -10,18 +10,17 @@
 }
 
 .welcome-message {
-    background-color: #d7bfae; /* Soft gold background */
-    color: #3b2716; /* Dark brown text color */
+    background-color: #d7bfae; 
+    color: #3b2716; 
     border-radius: 5px;
     padding: 15px;
     font-size: 1.2em;
 }
 
-/* Existing styles */
 
 .profile-section {
     margin-bottom: 20px;
-    text-align: center; /* Center the profile section */
+    text-align: center;
 }
 
 .profile-section div {
@@ -30,15 +29,15 @@
 }
 
 .rounded-profile-img {
-    border-radius: 50%; /* Makes the image circular */
-    border: 3px solid #c1a57b; /* Soft brown border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 150px; /* Set a width for the image */
-    height: 150px; /* Set a height for the image */
-    object-fit: cover; /* Ensure the image covers the area */
-    margin-bottom: 15px; /* Space below the image */
-    background-color: #fdfaf2; /* Slightly lighter background */
-    padding: 5px; /* Padding around the image */
+    border-radius: 50%; 
+    border: 3px solid #c1a57b; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 15px; 
+    background-color: #fdfaf2;
+    padding: 5px;
 }
 
 
@@ -52,7 +51,7 @@
 }
 
 .avatar-selection {
-    background-color: #fdfaf2; /* Slightly lighter background for the avatar selection area */
+    background-color: #fdfaf2; 
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -116,20 +115,20 @@ button:hover, .btn:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #efe8dc; /* Light cream background for list items */
-    color: #3b2716; /* Dark brown text */
+    background-color: #efe8dc;
+    color: #3b2716; 
     border: none;
     margin: 5px 0;
-    padding: 10px; /* Add padding for better spacing */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 10px; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .list-group-item .list-group-item-action {
     flex: 1;
     text-align: left;
     text-decoration: none;
-    color: #3b2716; /* Dark brown text */
+    color: #3b2716;
 }
 
 .list-group-item .list-group-item-action:hover {
@@ -147,11 +146,11 @@ input {
 }
 
 input::placeholder {
-    color: #a39374; /* Faded brown placeholder text */
+    color: #a39374;
 }
 
 .email-section, .name-surname-section, .delete-account-section {
-    background-color: #fdfaf2; /* Slightly lighter background */
+    background-color: #fdfaf2; 
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -175,7 +174,7 @@ input::placeholder {
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
-    flex-wrap: wrap; /* Wrap avatars to new line */
+    flex-wrap: wrap; 
 }
 
 .avatar-option {
@@ -188,11 +187,11 @@ input::placeholder {
 }
 
 .avatar-option:hover {
-    border-color: #a89360; /* Highlight on hover */
+    border-color: #a89360;
 }
 
 .avatar-option.selected {
-    border-color: #3b2716; /* Highlight when selected */
+    border-color: #3b2716; 
 }
 
 .modal {

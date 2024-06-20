@@ -1,4 +1,3 @@
-/* Container Styles */
 .list-group {
     max-width: 600px;
     margin: 20px auto;
@@ -9,7 +8,6 @@
     padding: 10px;
 }
 
-/* No Notifications Message */
 .no-notifications {
     text-align: center;
     font-style: italic;
@@ -18,7 +16,6 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
-/* Notification Item Styles */
 .list-group-item {
     display: flex;
     justify-content: space-between;
@@ -30,20 +27,17 @@
     background: #fdfdf5;
 }
 
-/* Notification Message Styles */
 .list-group-item {
     font-family: 'Georgia', serif;
     font-size: 16px;
     color: #4b2e13;
 }
 
-/* Read Notification Styles */
 .list-group-item .text-muted {
     color: #a29584;
     text-decoration: line-through;
 }
 
-/* Mark as Read Button Styles */
 .btn-primary {
     background-color: #8b5e34;
     border: 1px solid #8b5e34;
@@ -59,12 +53,10 @@
     background-color: #6b4f1e;
 }
 
-/* Hover Effect */
 .list-group-item:hover {
     background-color: #f2e9da;
 }
 
-/* Remove Last Border */
 .list-group-item:last-child {
     border-bottom: none;
 }

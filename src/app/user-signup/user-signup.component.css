@@ -1,8 +1,6 @@
-/* user-signup.component.css */
-
 .container {
-    background-color: #f4f1ea; /* Light parchment background color */
-    border: 1px solid #c1a57b; /* Soft brown border */
+    background-color: #f4f1ea;
+    border: 1px solid #c1a57b;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -11,8 +9,8 @@
 }
 
 .form-group label {
-    font-family: 'Garamond', serif; /* Classic bookish font */
-    color: #3b2716; /* Dark brown text color */
+    font-family: 'Garamond', serif; 
+    color: #3b2716; 
 }
 
 .form-control {
@@ -24,13 +22,13 @@
 }
 
 .form-control::placeholder {
-    color: #a39374; /* Faded brown placeholder text */
+    color: #a39374;
 }
 
 .alert {
-    background-color: #d7bfae; /* Soft gold background */
-    color: #3b2716; /* Dark brown text color */
-    font-family: 'Garamond', serif; /* Bookish font */
+    background-color: #d7bfae;
+    color: #3b2716; 
+    font-family: 'Garamond', serif; 
     border-radius: 5px;
 }
 

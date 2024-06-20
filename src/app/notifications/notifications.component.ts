@@ -41,7 +41,6 @@ export class NotificationsComponent implements OnInit {
 
   markAsRead(id: string): void {
     this.notificationsService.markNotificationAsRead(id).subscribe(() => {
-      // Update the local notifications list
       const notification = this.notifications.find(n => n.id === id);
       if (notification) {
         console.log('Notification before update:', notification);

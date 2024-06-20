@@ -19,7 +19,7 @@ body {
     border: 1px solid #e0e0e0;
     background-size: cover;
     font-family: 'Garamond', 'Times New Roman', serif;
-    word-wrap: break-word; /* Ensure long words wrap within the container */
+    word-wrap: break-word; 
 }
 
 .font-size-controls button {
@@ -35,48 +35,4 @@ body {
 
 .font-size-controls button:hover {
     background-color: #e2e6ea;
-}
-
-.social-share-buttons button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* Facebook button */
-.social-share-buttons .facebook {
-    background-color: #3b5998;
-}
-.social-share-buttons .facebook:hover {
-    background-color: #2d4373;
-}
-
-/* Twitter button */
-.social-share-buttons .twitter {
-    background-color: #1da1f2;
-}
-.social-share-buttons .twitter:hover {
-    background-color: #0c85d0;
-}
-
-/* LinkedIn button */
-.social-share-buttons .linkedin {
-    background-color: #0077b5;
-}
-.social-share-buttons .linkedin:hover {
-    background-color: #005582;
-}
-
-/* Icon styles */
-.social-share-buttons i {
-    margin-right: 4px;
-    font-size: 12px;
 }
