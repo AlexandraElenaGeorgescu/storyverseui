@@ -6,3 +6,19 @@
 .navbar-brand>img{
     height: 1.5em;
 }
+
+.btn-light {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+  
+  .btn-dark {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+  }
+  
+  .btn {
+    transition: background-color 0.3s, color 0.3s;
+  }

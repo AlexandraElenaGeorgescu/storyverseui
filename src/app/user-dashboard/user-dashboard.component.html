@@ -1,6 +1,6 @@
 <div class="container library-theme">
     <div class="row align-items-center justify-content-center">
-        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <div class="col-lg-8 col-xl-8">
             <div class="alert alert-success welcome-message" role="alert">
                 Welcome, <b>{{myAcc.surname}} {{myAcc.name}}</b> - {{currentDate | date:'fullDate'}}
             </div>
@@ -8,8 +8,8 @@
 
             <div class="profile-section text-center">
                 <img [src]="myAcc.avatar || 'assets/default-avatar.png'" alt="Profile Picture" class="profile-img rounded-profile-img">
-                <div><b>{{myAcc.email}}</b></div>
-                <div>Birthday: {{myAcc.birthday}}</div>
+                <div><h5>{{myAcc.email}}</h5></div>
+                <div><h5>Birthday: {{myAcc.birthday}}</h5></div>
             </div>
 
             <div class="avatar-selection my-3 text-center">

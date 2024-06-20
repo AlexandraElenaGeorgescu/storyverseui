@@ -27,7 +27,7 @@ export class StoryDetailsComponent implements OnInit {
     storyM: StoryModel = new StoryModel();
     registrationStatus: string = "";
     fontSize: number = 16;
-
+    
     constructor(
         private sanitizer: DomSanitizer,
         private titleService: Title,

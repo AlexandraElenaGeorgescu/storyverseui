@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="row align-items-center justify-content-center">
-        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <div class="col-lg-8 col-xl-8">
             <img *ngIf="storyM.image || getImageUrl()" [src]="getImageUrl(storyM.image)" class="img-fluid rounded" alt="Book Cover">
             <h1>{{storyM.name}}</h1>
             <h6><i>Date Created: {{storyM.dateCreated}}</i></h6>
@@ -28,6 +28,5 @@
                     <div [innerHTML]="sanitizeContent(storyM.actualStory)"></div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+            <hr>
+            

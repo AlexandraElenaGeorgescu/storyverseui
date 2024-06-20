@@ -20,10 +20,11 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   templateUrl: './featured-stories.component.html',
   styleUrl: './featured-stories.component.css',
 })
+
 export class FeaturedStoriesComponent implements OnInit {
-  highestRated: any;
-  mostSubscribed: any;
-  mostBookmarked: any;
+  highestRated: any[] = [];
+  mostSubscribed: any[] = [];
+  mostBookmarked: any[] = [];
 
   constructor(private dataService: DataService, private renderer: Renderer2, private sanitizer: DomSanitizer) {}
 
@@ -38,19 +39,14 @@ export class FeaturedStoriesComponent implements OnInit {
   }
 
   sanitizeAndCleanContent(content: string): string {
-    // Create a temporary DOM element to manipulate the content
     const tempElement = document.createElement('div');
     tempElement.innerHTML = content;
-
-    // Remove all inline styles recursively
     this.removeInlineStyles(tempElement);
-
-    // Return the cleaned HTML
     return tempElement.innerHTML;
   }
 
   removeInlineStyles(element: HTMLElement) {
-    
+    element.removeAttribute('style');
     Array.from(element.children).forEach(child => {
         this.removeInlineStyles(child as HTMLElement);
     });
@@ -67,9 +63,9 @@ export class FeaturedStoriesComponent implements OnInit {
       'story/featured',
       (data) => {
         console.log('Featured stories data:', data);
-        this.highestRated = data.highestRated[0];
-        this.mostSubscribed = data.mostSubscribed[0];
-        this.mostBookmarked = data.mostBookmarked[0];
+        this.highestRated = data.highestRated;
+        this.mostSubscribed = data.mostSubscribed;
+        this.mostBookmarked = data.mostBookmarked;
       },
       (error) => {
         console.error('Error fetching featured stories', error);

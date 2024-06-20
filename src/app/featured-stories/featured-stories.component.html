@@ -1,35 +1,41 @@
 <div class="featured-stories-container">
   <h2>Featured Stories</h2>
-  <div class="story-card" *ngIf="highestRated">
-    <h3>Highest Rated Story</h3>
-    <div class="story-details">
-      <img [src]="getImageUrl(highestRated.image)" class="card-img-top" alt="Book Cover">
-      <div class="story-info">
-        <p>{{ highestRated.name }}</p>
-        <p class="author">by {{ highestRated.author }}</p>
-        <div [innerHTML]="sanitizeContent(highestRated.description)"></div>
+  <div class="category" *ngIf="highestRated.length > 0">
+    <h3>Highest Rated Stories</h3>
+    <div class="story-card" *ngFor="let story of highestRated">
+      <div class="story-details">
+        <img [src]="getImageUrl(story.image)" class="card-img-top" alt="Book Cover">
+        <div class="story-info">
+          <p>{{ story.name }}</p>
+          <p class="author">by {{ story.author }}</p>
+          <div [innerHTML]="sanitizeContent(story.description)"></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="story-card" *ngIf="mostSubscribed">
-    <h3>Most Subscribed Story</h3>
-    <div class="story-details">
-      <img [src]="getImageUrl(mostSubscribed.image)" class="card-img-top" alt="Book Cover">
-      <div class="story-info">
-        <p>{{ mostSubscribed.name }}</p>
-        <p class="author">by {{ mostSubscribed.author }}</p>
-        <div [innerHTML]="sanitizeContent(mostSubscribed.description)"></div>
+  <div class="category" *ngIf="mostSubscribed.length > 0">
+    <h3>Most Subscribed Stories</h3>
+    <div class="story-card" *ngFor="let story of mostSubscribed">
+      <div class="story-details">
+        <img [src]="getImageUrl(story.image)" class="card-img-top" alt="Book Cover">
+        <div class="story-info">
+          <p>{{ story.name }}</p>
+          <p class="author">by {{ story.author }}</p>
+          <div [innerHTML]="sanitizeContent(story.description)"></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="story-card" *ngIf="mostBookmarked">
-    <h3>Most Bookmarked Story</h3>
-    <div class="story-details">
-      <img [src]="getImageUrl(mostBookmarked.image)" class="card-img-top" alt="Book Cover">
-      <div class="story-info">
-        <p>{{ mostBookmarked.name }}</p>
-        <h6 class="author">{{mostBookmarked.author}}</h6> 
-        <div [innerHTML]="sanitizeContent(mostBookmarked.description)"></div>
+  <div class="category" *ngIf="mostBookmarked.length > 0">
+    <h3>Most Bookmarked Stories</h3>
+    <div class="story-card" *ngFor="let story of mostBookmarked">
+      <div class="story-details">
+        <img [src]="getImageUrl(story.image)" class="card-img-top" alt="Book Cover">
+        <div class="story-info">
+          <p>{{ story.name }}</p>
+          <p class="author">by {{ story.author }}</p>
+          <div [innerHTML]="sanitizeContent(story.description)"></div>
+        </div>
       </div>
     </div>
   </div>

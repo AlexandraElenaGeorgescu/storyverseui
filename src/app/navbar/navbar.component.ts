@@ -13,12 +13,15 @@ import { ThemeService } from '../services/theme.service';
   providers: [ThemeService]
 })
 export class NavbarComponent implements OnInit {
+  isDarkMode = false;
+
   constructor(private router: Router, private themeService: ThemeService) {}
 
   ngOnInit() {}
 
   toggleDarkMode() {
     this.themeService.toggleTheme();
+    this.isDarkMode = !this.isDarkMode;
   }
   
   search() {

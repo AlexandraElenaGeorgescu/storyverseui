@@ -8,7 +8,7 @@ body {
 
 h2 {
     text-align: center;
-    color: #4b2308;
+    color: #562704;
     font-size: 2.5em;
     font-weight: bold;
     margin-bottom: 30px;
@@ -19,9 +19,9 @@ h2 {
 
 h2::after {
     content: "";
-    width: 60px;
+    width: 390px;
     height: 4px;
-    background-color: #4b2308;
+    background-color: #651306;
     position: absolute;
     bottom: -10px;
     left: 50%;
@@ -30,10 +30,12 @@ h2::after {
 }
 
 h3 {
-    color: #ba9546;
+    color: #bd782e;
     font-size: 1.8em;
     font-weight: bold;
     margin-bottom: 10px;
+    text-transform: uppercase;
+    position: relative;
 }
 
 .featured-stories-container {
@@ -41,16 +43,20 @@ h3 {
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.category {
+    margin-bottom: 30px;
 }
 
 .story-card {
     background-color: #ffffff;
     margin-bottom: 20px;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     overflow: hidden;
     position: relative;
@@ -63,12 +69,12 @@ h3 {
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: #ba9546;
+    background-color: #751f16;
 }
 
 .story-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .story-details {
@@ -83,7 +89,7 @@ h3 {
     border-radius: 12px;
     object-fit: cover;
     margin-right: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .story-info {
@@ -99,7 +105,7 @@ h3 {
 .story-card .author {
     font-size: 1em;
     font-style: italic;
-    color: #ba9546;
+    color: #891c10;
     margin-bottom: 10px;
 }
 
