@@ -170,12 +170,6 @@ input::placeholder {
     color: #f4f1ea;
 }
 
-span, label {
-    color: #3b2716;
-    display: block;
-    margin-top: 10px;
-}
-
 .avatar-list {
     display: flex;
     justify-content: center;

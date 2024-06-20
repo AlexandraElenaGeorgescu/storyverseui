@@ -387,7 +387,7 @@ body.dark-mode {
   color: #e0e0e0 !important; 
 }
 
-.dark-mode span, label {
+.dark-mode .text {
   color: #e0e0e0 !important; 
 }
 
