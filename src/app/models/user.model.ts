@@ -1,7 +1,7 @@
 export class UserModel {
     email: string;
     password: string;
-    birthday: string; // Allow birthday to be either a string or a Date
+    birthday: string; 
     name: string;
     surname: string;
     avatar?: string;
