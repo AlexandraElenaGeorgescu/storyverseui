@@ -1,17 +1,24 @@
 <div class="container mt-5">
     <div class="row align-items-center justify-content-center">
         <div class="col-lg-8 col-xl-8">
-            <img *ngIf="storyM.image || getImageUrl()" [src]="getImageUrl(storyM.image)" class="img-fluid rounded" alt="Book Cover">
+            <img *ngIf="storyM.image || getImageUrl()" [src]="getImageUrl(storyM.image)" class="img-fluid rounded"
+                alt="Book Cover">
             <h1>{{storyM.name}}</h1>
             <h6><i>Date Created: {{storyM.dateCreated}}</i></h6>
             <h6><i>Genre: {{storyM.genre}}</i></h6>
             <h6><i>Author: {{storyM.author}}</i></h6>
-            <button type="button" class="btn btn-warning m-1" id="btnReviews" [routerLink]="['/review-browse', storyId, 6, 0]">See Reviews</button>
-            <button type="button" class="btn btn-dark m-1" id="btnChat" [routerLink]="['/chat-room', storyId]" hidden>Chat Page</button>
-            <button type="button" class="btn btn-success m-1" id="btnCreator" [routerLink]="['/story-stats', storyId]" hidden>View Stats</button>
-            <button type="button" class="btn btn-primary m-1" id="btnLogin" [routerLink]="['/user-signin']" hidden>Login</button>
-            <button type="button" class="btn btn-primary m-1" id="btnRegister" (click)="btnRegisterClick()" hidden>Register</button>
-            <button type="button" class="btn btn-danger m-1" id="btnYourReview" [routerLink]="['/review-edit', storyId]" style="display: none">Your Review</button>
+            <button type="button" class="btn btn-warning m-1" id="btnReviews"
+                [routerLink]="['/review-browse', storyId, 6, 0]">See Reviews</button>
+            <button type="button" class="btn btn-dark m-1" id="btnChat" [routerLink]="['/chat-room', storyId]"
+                hidden>Chat Page</button>
+            <button type="button" class="btn btn-success m-1" id="btnCreator" [routerLink]="['/story-stats', storyId]"
+                hidden>View Stats</button>
+            <button type="button" class="btn btn-primary m-1" id="btnLogin" (click)="confirmLogin()"
+                hidden>Login</button>
+            <button type="button" class="btn btn-primary m-1" id="btnRegister" (click)="btnRegisterClick()"
+                hidden>Register</button>
+            <button type="button" class="btn btn-danger m-1" id="btnYourReview" [routerLink]="['/review-edit', storyId]"
+                style="display: none">Your Review</button>
             <hr>
             <button (click)="bookmarkStory(storyId)" class="btn btn-primary">Bookmark</button>
             <hr>
@@ -30,4 +37,30 @@
                 </div>
             </div>
             <hr>
-            
+            <div class="modal" id="loginAlertModal" tabindex="-1" aria-labelledby="loginAlertModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginAlertModalLabel">Story Alert</h5>
+                            <button type="button" class="btn-close" (click)="closeModal('loginAlertModal')"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class = "alert-message-not-logged-in"><b>
+                                If you want to come back to this story to register or leave a
+                                review, remember the story name so you can search it in the search bar. After login, you
+                                will be redirected to your profile page!
+                            </b></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" [routerLink]="['/user-signin']">Login</button>
+                            <button type="button" class="btn btn-secondary"
+                                (click)="closeModal('loginAlertModal')">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

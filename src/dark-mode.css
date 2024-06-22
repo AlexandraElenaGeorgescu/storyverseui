@@ -397,6 +397,10 @@ body.dark-mode {
   border-color: #444 !important;
 }
 
+.dark-mode .alert-message-not-logged-in{
+  color: #ff3700;
+}
+
 .dark-mode .ct-series-a .ct-line,
 .dark-mode .ct-series-a .ct-point {
   stroke: #a14c14 !important;

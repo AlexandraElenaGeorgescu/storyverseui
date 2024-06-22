@@ -198,6 +198,7 @@ export class UserDashboardComponent implements OnInit {
     updateAvatar(): void {
         const updatedUser: UserModel = { ...this.myAcc };
         this.dataService.patch<any>('user/update-avatar', (response: any) => {
+            this.closeModal('avatarSelectionModal');
             this.utils.showMessage('Avatar updated successfully!');
         }, (error: any) => {
             this.utils.showMessage('There was a problem updating your avatar!');

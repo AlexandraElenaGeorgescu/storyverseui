@@ -151,22 +151,17 @@ export class StoryDetailsComponent implements OnInit {
     }
 
     sanitizeAndCleanContent(content: string): string {
-        // Create a temporary DOM element to manipulate the content
         const tempElement = document.createElement('div');
         tempElement.innerHTML = content;
 
-        // Remove all inline styles recursively
         this.removeInlineStyles(tempElement);
 
-        // Return the cleaned HTML
         return tempElement.innerHTML;
     }
 
     removeInlineStyles(element: HTMLElement) {
-        // Set font size directly
         this.renderer.setStyle(element, 'fontSize', `${this.fontSize}px`);
         
-        // Recursively remove inline styles and set font size
         Array.from(element.children).forEach(child => {
             this.removeInlineStyles(child as HTMLElement);
         });
@@ -178,7 +173,7 @@ export class StoryDetailsComponent implements OnInit {
         } else if (action === 'decrease') {
             this.fontSize -= 2;
         }
-        this.applyFontSizeToContent(); // Apply font size after changing it
+        this.applyFontSizeToContent(); 
     }
 
     applyFontSizeToContent() {
@@ -203,4 +198,22 @@ bookmarkStory(storyId: string): void {
         token
     );
 }
+openModal(id: string): void {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+closeModal(id: string): void {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+confirmLogin(): void {
+    this.openModal('loginAlertModal');
+}
+
 }
