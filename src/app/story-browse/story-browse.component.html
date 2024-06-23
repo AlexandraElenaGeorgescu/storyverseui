@@ -1,12 +1,12 @@
 <div class="btn-group m-0" role="group">
-    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId - 1]" class="btn btn-primary">
+    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId - 1]" [queryParams]="{ genre: selectedGenre, sortBy: sortBy }" class="btn btn-primary">
         &lt;&lt;&lt;
     </a>
     <a *ngIf="prevBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
         &lt;&lt;&lt;
     </a>
     <button type="button" class="btn btn-secondary disabled">Stories</button>
-    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId + 1]" class="btn btn-primary">
+    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId + 1]" [queryParams]="{ genre: selectedGenre, sortBy: sortBy }" class="btn btn-primary">
         &gt;&gt;&gt;
     </a>
     <a *ngIf="nextBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
@@ -19,6 +19,12 @@
         <select class="form-select" [(ngModel)]="selectedGenre" (change)="filterStories()">
             <option value="">All Genres</option>
             <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <select id="sortOptions" class="form-select" [(ngModel)]="sortBy" (change)="updateSort(sortBy)">
+            <option value="" disabled selected>Sort By</option>
+            <option *ngFor="let option of sortOptions" [value]="option.key">{{option.value}}</option>
         </select>
     </div>
 </div>
@@ -41,14 +47,14 @@
 
 <br>
 <div class="btn-group m-0" role="group">
-    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId - 1]" class="btn btn-primary">
+    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId - 1]" [queryParams]="{ genre: selectedGenre, sortBy: sortBy }" class="btn btn-primary">
         &lt;&lt;&lt;
     </a>
     <a *ngIf="prevBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
         &lt;&lt;&lt;
     </a>
     <button type="button" class="btn btn-secondary disabled">Stories</button>
-    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId + 1]" class="btn btn-primary">
+    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId + 1]" [queryParams]="{ genre: selectedGenre, sortBy: sortBy }" class="btn btn-primary">
         &gt;&gt;&gt;
     </a>
     <a *ngIf="nextBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
