@@ -77,7 +77,6 @@ export class StoryCreateComponent implements OnInit {
         formData.append('file', this.fileToUpload, this.fileToUpload.name);
     
         this.dataService.post(`story/upload-image/${storyId}`, (success) => {
-            // handle success
         }, (error) => {
             this.utils.showMessage('There was a problem uploading the image!');
             console.log(`Error response: ${error}`);

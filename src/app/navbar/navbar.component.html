@@ -28,11 +28,11 @@
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
+        <form [formGroup]="formSearch" (ngSubmit)="search()" class="form-inline my-2 my-lg-0">
             <div class="input-group">
-                <input type="text" class="form-control" id="searchText" placeholder="Search for a specific story..." (keydown)="enterDown($event)">
+                <input formControlName="searchText" class="form-control" id="searchText" placeholder="Search for a specific story...">
                 <div class="input-group-append">
-                    <button class="btn btn-search" type="button" (click)="search()"><b>&#8981;</b></button>
+                    <button class="btn btn-search" type="submit"><b>&#8981;</b></button>
                 </div>
             </div>
         </form>

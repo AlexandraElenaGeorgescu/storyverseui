@@ -4,18 +4,24 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ThemeService } from '../services/theme.service';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, RouterModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  providers: [ThemeService]
+  providers: [ThemeService, FormBuilder]
 })
 export class NavbarComponent implements OnInit {
   isDarkMode = false;
+  formSearch;
 
-  constructor(private router: Router, private themeService: ThemeService) {}
+  constructor(private router: Router, private themeService: ThemeService, private formBuilder: FormBuilder) {
+    this.formSearch = this.formBuilder.group({
+      searchText: new FormControl('')
+    });
+  }
 
   ngOnInit() {}
 
@@ -25,11 +31,13 @@ export class NavbarComponent implements OnInit {
   }
   
   search() {
-    const textInput: HTMLInputElement = document.getElementById("searchText") as HTMLInputElement;
-    const searchText: string = textInput.value.replace('\\', ' ').replace('/', ' ');
-    textInput.value = '';
+    let valueSearch = this.formSearch.controls["searchText"].value;
+    const textInput = valueSearch==null ? "" : valueSearch;
+    console.log(textInput);
+    textInput.replace('\\', ' ').replace('/', ' ');
+    console.log(textInput);
 
-    this.router.navigate(['story-search/6/0/' + encodeURIComponent(searchText)]);
+    this.router.navigate(['story-search/6/0/' + encodeURIComponent(textInput)]);
     this.triggerNavbarTogglerClick();
   }
 
