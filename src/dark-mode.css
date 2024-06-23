@@ -714,6 +714,11 @@ body.dark-mode {
   text-decoration: underline !important;
 }
 
+.dark-mode .list-group-item-action:hover {
+  text-decoration: underline !important;
+  color: #a14c14 !important;
+}
+
 .dark-mode .user-dashboard input {
   background-color: #2e2e2e !important;
   border-color: #555 !important;
