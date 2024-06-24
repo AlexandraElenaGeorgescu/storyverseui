@@ -1,12 +1,12 @@
 <div class="btn-group m-0" role="group">
-    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId - 1]" class="btn btn-primary">
+    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-search', pageSize, pageId - 1, searchText]" class="btn btn-primary">
         &lt;&lt;&lt;
     </a>
     <a *ngIf="prevBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
         &lt;&lt;&lt;
     </a>
     <button type="button" class="btn btn-secondary disabled">Stories</button>
-    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId + 1]" class="btn btn-primary">
+    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-search', pageSize, pageId + 1, searchText]" class="btn btn-primary">
         &gt;&gt;&gt;
     </a>
     <a *ngIf="nextBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
@@ -15,8 +15,8 @@
 </div>
 
 <div class="row">
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let story of stories">
-        <div class="card my-3 story">
+    <div class="story col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-4" *ngFor="let story of stories">
+        <div class="card h-100">
             <img [src]="getImageUrl(story.image)" class="card-img-top" alt="Book Cover">
             <div class="card-body">
                 <h5 class="card-title">{{story.name}}</h5>
@@ -28,20 +28,19 @@
             </div>
         </div>
     </div>
-    
 </div>
 
 <br>
 
 <div class="btn-group m-0" role="group">
-    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId - 1]" class="btn btn-primary">
+    <a *ngIf="!prevBtnDisabled" [routerLink]="['/story-search', pageSize, pageId - 1, searchText]" class="btn btn-primary">
         &lt;&lt;&lt;
     </a>
     <a *ngIf="prevBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
         &lt;&lt;&lt;
     </a>
     <button type="button" class="btn btn-secondary disabled">Stories</button>
-    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-browse', pageSize, pageId + 1]" class="btn btn-primary">
+    <a *ngIf="!nextBtnDisabled" [routerLink]="['/story-search', pageSize, pageId + 1, searchText]" class="btn btn-primary">
         &gt;&gt;&gt;
     </a>
     <a *ngIf="nextBtnDisabled" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">
