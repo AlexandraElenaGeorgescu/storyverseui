@@ -44,16 +44,16 @@ export class StoryDetailsComponent implements OnInit {
             this.dataService.get<string>('user/registration-status/' + this.storyId, serverRegistrationStatus => {
                 this.registrationStatus = serverRegistrationStatus;
                 this.showBtns();
-                this.applyFontSizeToContent(); // Ensure font size is applied after content load
+                this.applyFontSizeToContent(); 
             }, error => {
                 this.registrationStatus = 'unauthenticated';
                 this.showBtns();
-                this.applyFontSizeToContent(); // Ensure font size is applied even on error
+                this.applyFontSizeToContent(); 
                 console.log(`Error response: ${error}`);
             }, localStorage.getItem('user-token') ?? '');
         }, error => {
             this.utils.showMessage('There was a problem!');
-            this.applyFontSizeToContent(); // Ensure font size is applied even on error
+            this.applyFontSizeToContent(); 
             console.log(`Error response: ${error}`);
         });
     }
@@ -78,6 +78,10 @@ export class StoryDetailsComponent implements OnInit {
                 if (btnCreator) {
                     btnCreator.removeAttribute('hidden');
                 }
+                const btnYourBookmark = document.getElementById('btnYourBookmark');
+                if (btnYourBookmark) {
+                    btnYourBookmark.removeAttribute('hidden');
+                }
                 break;
             }
             case ('registered'): {
@@ -93,6 +97,10 @@ export class StoryDetailsComponent implements OnInit {
                 const btnYourReview = document.getElementById('btnYourReview');
                 if (btnYourReview) {
                     btnYourReview.style.display = 'inline-block';
+                }
+                const btnYourBookmark = document.getElementById('btnYourBookmark');
+                if (btnYourBookmark) {
+                    btnYourBookmark.removeAttribute('hidden');
                 }
                 break;
             }

@@ -20,8 +20,8 @@
             <button type="button" class="btn btn-danger m-1" id="btnYourReview" [routerLink]="['/review-edit', storyId]"
                 style="display: none">Your Review</button>
             <hr>
-            <button (click)="bookmarkStory(storyId)" class="btn btn-primary">Bookmark</button>
-            <hr>
+            <button (click)="bookmarkStory(storyId)" class="btn btn-primary"  id="btnYourBookmark" hidden>Bookmark</button>
+            <br><br><br>
             <div class="font-size-controls">
                 <button (click)="changeFontSize('increase')" class="btn-size-increase">A+</button>
                 <button (click)="changeFontSize('decrease')" class="btn-size-decrease">A-</button>
